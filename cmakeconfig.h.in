@@ -3,9 +3,6 @@
 /* Define to 1 if arpa/inet.h declares `ether_ntohost' */
 #cmakedefine ARPA_INET_H_DECLARES_ETHER_NTOHOST 1
 
-/* define if you want to build the possibly-buggy SMB printer */
-#cmakedefine ENABLE_SMB 1
-
 /* Define to 1 if you have the `bpf_dump' function. */
 #cmakedefine HAVE_BPF_DUMP 1
 

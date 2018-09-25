@@ -306,7 +306,6 @@ llc_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen,
 		return (hdrlen);
 	}
 
-#ifdef ENABLE_SMB
 	if (ssap == LLCSAP_NETBEUI && dsap == LLCSAP_NETBEUI
 	    && (!(control & LLC_S_FMT) || control == LLC_U_FMT)) {
 		/*
@@ -322,7 +321,7 @@ llc_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen,
 		netbeui_print(ndo, control, p, length);
 		return (hdrlen);
 	}
-#endif
+
 	if (ssap == LLCSAP_ISONS && dsap == LLCSAP_ISONS
 	    && control == LLC_UI) {
 		isoclns_print(ndo, p, length);

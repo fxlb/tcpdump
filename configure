@@ -700,7 +700,6 @@ enable_option_checking
 with_gcc
 enable_universal
 with_smi
-enable_smb
 with_user
 with_chroot
 with_sandbox_capsicum
@@ -1331,8 +1330,6 @@ Optional Features:
   --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
   --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
   --disable-universal     don't build universal on macOS
-  --enable-smb            enable possibly-buggy SMB printer default=yes
-  --disable-smb           disable possibly-buggy SMB printer
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -4245,28 +4242,6 @@ fi
 
 
 fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether to enable the possibly-buggy SMB printer" >&5
-$as_echo_n "checking whether to enable the possibly-buggy SMB printer... " >&6; }
-# Check whether --enable-smb was given.
-if test "${enable_smb+set}" = set; then :
-  enableval=$enable_smb;
-else
-  enableval=yes
-fi
-
-case "$enableval" in
-yes)	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
-
-$as_echo "#define ENABLE_SMB 1" >>confdefs.h
-
-	LOCALSRC="print-smb.c smbutil.c $LOCALSRC"
-	;;
-*)	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-	;;
-esac
 
 
 # Check whether --with-user was given.

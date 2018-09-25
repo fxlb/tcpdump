@@ -208,6 +208,7 @@ LIBNETDISSECT_SRC=\
 	print-sl.c \
 	print-sll.c \
 	print-slow.c \
+	print-smb.c \
 	print-smtp.c \
 	print-snmp.c \
 	print-stp.c \
@@ -234,6 +235,7 @@ LIBNETDISSECT_SRC=\
 	print-zephyr.c \
 	print-zeromq.c \
 	signature.c \
+	smbutil.c \
 	strtoaddr.c \
 	util-print.c
 
@@ -362,9 +364,7 @@ EXTRA_DIST = \
 	mkdep \
 	packetdat.awk \
 	print-pflog.c \
-	print-smb.c \
 	send-ack.awk \
-	smbutil.c \
 	stime.awk \
 	tcpdump.1.in \
 	win32/prj/GNUmakefile \

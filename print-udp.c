@@ -618,12 +618,10 @@ udp_print(netdissect_options *ndo, const u_char *bp, u_int length,
 			krb_print(ndo, (const u_char *)(up + 1));
 		else if (IS_SRC_OR_DST_PORT(L2TP_PORT))
 			l2tp_print(ndo, (const u_char *)(up + 1), length);
-#ifdef ENABLE_SMB
 		else if (IS_SRC_OR_DST_PORT(NETBIOS_NS_PORT))
 			nbt_udp137_print(ndo, (const u_char *)(up + 1), length);
 		else if (IS_SRC_OR_DST_PORT(NETBIOS_DGRAM_PORT))
 			nbt_udp138_print(ndo, (const u_char *)(up + 1), length);
-#endif
 		else if (dport == VAT_PORT)
 			vat_print(ndo, (const void *)(up + 1), length);
 		else if (IS_SRC_OR_DST_PORT(ZEPHYR_SRV_PORT) || IS_SRC_OR_DST_PORT(ZEPHYR_CLT_PORT))

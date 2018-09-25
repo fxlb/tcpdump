@@ -76,7 +76,6 @@ option(WITH_SMI "Build with libsmi, if available" ON)
 option(WITH_CRYPTO "Build with OpenSSL/libressl libcrypto, if available" ON)
 option(WITH_CAPSICUM "Build with Capsicum security functions, if available" ON)
 option(WITH_CAP_NG "Use libcap-ng, if available" ON)
-option(ENABLE_SMB "Build with the SMB dissector" ON)
 
 #
 # String parameters.  Neither of them are set, initially; only if the
@@ -882,15 +881,6 @@ endif()
 # Input files
 ######################################
 
-if(ENABLE_SMB)
-    #
-    # We allow the SMB dissector to be omitted.
-    #
-    set(LOCALSRC ${LOCALSRC}
-        print-smb.c
-        smbutil.c)
-endif(ENABLE_SMB)
-
 set(NETDISSECT_SOURCE_LIST_C
     addrtoname.c
     addrtostr.c
@@ -1027,6 +1017,7 @@ set(NETDISSECT_SOURCE_LIST_C
     print-sl.c
     print-sll.c
     print-slow.c
+    print-smb.c
     print-smtp.c
     print-snmp.c
     print-stp.c
@@ -1054,6 +1045,7 @@ set(NETDISSECT_SOURCE_LIST_C
     print-zeromq.c
     ${LOCALSRC}
     signature.c
+    smbutil.c
     strtoaddr.c
     util-print.c
 )

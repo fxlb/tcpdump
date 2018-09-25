@@ -145,21 +145,6 @@ main()
 	])
 fi
 
-AC_MSG_CHECKING([whether to enable the possibly-buggy SMB printer])
-AC_ARG_ENABLE(smb,
-[  --enable-smb            enable possibly-buggy SMB printer [default=yes]
-  --disable-smb           disable possibly-buggy SMB printer],,
-   enableval=yes)
-case "$enableval" in
-yes)	AC_MSG_RESULT(yes)
-	AC_DEFINE(ENABLE_SMB, 1,
-	    [define if you want to build the possibly-buggy SMB printer])
-	LOCALSRC="print-smb.c smbutil.c $LOCALSRC"
-	;;
-*)	AC_MSG_RESULT(no)
-	;;
-esac
-
 AC_ARG_WITH(user, [  --with-user=USERNAME    drop privileges by default to USERNAME])
 AC_MSG_CHECKING([whether to drop root privileges by default])
 if test ! -z "$with_user" ; then
