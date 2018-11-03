@@ -101,6 +101,7 @@ script:
   - PATH=$PATH make install
   - echo -n travis_fold:end:script.make_install
   - if [ "$CMAKE" = no ]; then make check; fi
+  - if [ "$CMAKE" = no ]; then ./asan.sh "$CC"; fi
   - ./tcpdump -D
   - ./tcpdump -J
   - ./tcpdump --version
