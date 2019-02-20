@@ -77,6 +77,7 @@ before_install:
   - uname -a
   - date
   - if [ "$TRAVIS_OS_NAME" = linux ]; then dpkg --print-foreign-architectures; fi
+  - if [ "$TRAVIS_OS_NAME" = linux ]; then dpkg -l '*lib*:i386'; fi
   - if [ "$TRAVIS_OS_NAME" = osx ]; then brew update >/dev/null; fi
 
 install:
