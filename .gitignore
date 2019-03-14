@@ -43,3 +43,9 @@ netdissect.dir/
 tcpdump.dir/
 tcpdump.sln
 .vs/
+fuzz/corpus/
+fuzz/bgp_print_fuzzer
+fuzz/ether_print_fuzzer
+fuzz/ip6_print_fuzzer
+fuzz/ip_print_fuzzer
+fuzz/fuzz_pcap
