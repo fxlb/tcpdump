@@ -83,7 +83,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = linux ]; then dpkg-query -f '${Package}__${Version}__${Architecture}\n' -W 'lib*-dev'; fi
 
 install:
-  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install libsmi | grep -v '%'; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install libsmi ccache | grep -v '%'; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then export PATH="/usr/local/opt/ccache/libexec:$PATH"; fi
 
 before_script:
   - if [ "$BUILD_LIBPCAP" = true ]; then (cd .. && echo '$ git clone [...] libpcap.git' && git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/libpcap.git && cd libpcap && ./configure "--${REMOTE}-remote" --prefix=/tmp && make && make install); fi
