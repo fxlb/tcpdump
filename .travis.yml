@@ -79,7 +79,7 @@ git:
 before_install:
   - uname -a
   - date
-  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew update >/dev/null; fi
+#  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew update >/dev/null; fi
   - if [ "$TRAVIS_OS_NAME" = linux ]; then dpkg-query -f '${Package}__${Version}__${Architecture}\n' -W 'lib*-dev'; fi
 
 install:
