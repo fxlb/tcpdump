@@ -406,6 +406,7 @@ pretty_print_packet(netdissect_options *ndo, const struct pcap_pkthdr *h,
 	 * Rather than pass it all the way down, we set this member
 	 * of the netdissect_options structure.
 	 */
+	ndo->ndo_packetp = sp;
 	ndo->ndo_snapend = sp + h->caplen;
 
 	ndo->ndo_protocol = "";

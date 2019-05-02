@@ -351,6 +351,7 @@ extern void nd_pop_all_packet_info(netdissect_options *);
 
 #define ND_TTEST_LEN(p, l) \
   (IS_NOT_NEGATIVE(l) && \
+	(uintptr_t)(p) >= (uintptr_t)ndo->ndo_packetp && \
 	((uintptr_t)ndo->ndo_snapend - (l) <= (uintptr_t)ndo->ndo_snapend && \
          (uintptr_t)(p) <= (uintptr_t)ndo->ndo_snapend - (l)))
 
