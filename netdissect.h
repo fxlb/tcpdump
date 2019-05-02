@@ -378,7 +378,8 @@ NORETURN void nd_trunc_longjmp(netdissect_options *ndo);
 
 #define ND_TTEST_LEN(p, l) \
   (IS_NOT_NEGATIVE(l) && \
-	((uintptr_t)ndo->ndo_snapend - (l) <= (uintptr_t)ndo->ndo_snapend && \
+	((uintptr_t)(p) >= (uintptr_t)ndo->ndo_packetp && \
+	 (uintptr_t)ndo->ndo_snapend - (l) <= (uintptr_t)ndo->ndo_snapend && \
          (uintptr_t)(p) <= (uintptr_t)ndo->ndo_snapend - (l)))
 
 /* True if "*(p)" was captured */
