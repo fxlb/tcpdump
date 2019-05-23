@@ -112,7 +112,8 @@ script:
   - echo '$ make install [...]' && echo travis_fold:start:script.make_install
   - PATH=$PATH make install
   - echo -n travis_fold:end:script.make_install
-  - if [ "$CMAKE" = no ]; then make check; fi
+  - if [ "$CMAKE" = yes ]; then cp tcpdump config.h ..; fi
+  - make check
   - ./tcpdump --version
   - ./tcpdump -h
   - ./tcpdump -D
