@@ -102,9 +102,11 @@ script:
   - if [ "$CMAKE" = yes ]; then echo travis_fold:start:script.cmake; fi
   - if [ "$CMAKE" = yes ]; then
         if [ "$TRAVIS_OS_NAME" = osx ]; then
-                export CPPFLAGS="-I/usr/local/Cellar/openssl/$OSX_SSL_DIR/include/";
+            export CPPFLAGS="-I/usr/local/Cellar/openssl/$OSX_SSL_DIR/include/";
+            cmake -DWITH_CRYPTO=${CRYPTO} -DCRYPTO_INCLUDE_DIR="/usr/local/Cellar/openssl/$OSX_SSL_DIR/include/" -DCMAKE_PREFIX_PATH=/tmp -DCMAKE_INSTALL_PREFIX=/tmp ..;
+        else
+            cmake -DWITH_CRYPTO=${CRYPTO} -DCMAKE_PREFIX_PATH=/tmp -DCMAKE_INSTALL_PREFIX=/tmp ..;
         fi;
-        cmake -DWITH_CRYPTO=${CRYPTO} -DCMAKE_PREFIX_PATH=/tmp -DCMAKE_INSTALL_PREFIX=/tmp ..;
     fi
   - if [ "$CMAKE" = yes ]; then echo -n travis_fold:end:script.cmake; fi
   - make -s
