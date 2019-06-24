@@ -1,8 +1,8 @@
-    1  08:33:04.1056259 OSI NLPID 0xfe unknown, length: 262140
+    1  08:33:04.999999 OSI NLPID 0xfe unknown, length: 262140
 	0x0000:  fe7f 4a01 0066 0002 00ff ffff f200 0000
 	0x0010:  00c6 0000 007f e6ff 00e6 6800 0000
-    2  06:59:12.1058307 unknown CHDLC protocol (0xfafe)
-    3  22:59:12.1056259 OSI NLPID 0xfe unknown, length: 262140
+    2  06:59:12.999999 unknown CHDLC protocol (0xfafe)
+    3  22:59:12.999999 OSI NLPID 0xfe unknown, length: 262140
 	0x0000:  fe7f 4a01 f165 0002 0000 0000 0000 0000
 	0x0010:  00c6 0000 007f e6ff 00e6 6800 0000
     4  19:08:48.000000 IS-IS, length 262139
