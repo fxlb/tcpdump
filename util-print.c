@@ -237,11 +237,15 @@ ts_frac_print(netdissect_options *ndo, int usec)
 	switch (ndo->ndo_tstamp_precision) {
 
 	case PCAP_TSTAMP_PRECISION_MICRO:
-		ND_PRINT(".%06u", (unsigned)usec);
+		ND_PRINT(".%06d", usec);
+		if (usec < 0 || usec > 999999)
+			ND_PRINT("!");
 		break;
 
 	case PCAP_TSTAMP_PRECISION_NANO:
-		ND_PRINT(".%09u", (unsigned)usec);
+		ND_PRINT(".%09d", usec);
+		if (usec < 0 || usec > 999999999)
+			ND_PRINT("!");
 		break;
 
 	default:
@@ -249,7 +253,9 @@ ts_frac_print(netdissect_options *ndo, int usec)
 		break;
 	}
 #else
-	ND_PRINT(".%06u", (unsigned)usec);
+	ND_PRINT(".%06d", usec);
+	if (usec < 0 || usec > 999999)
+		ND_PRINT("!");
 #endif
 }
 
