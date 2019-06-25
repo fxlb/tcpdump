@@ -231,17 +231,17 @@ nd_printzp(netdissect_options *ndo,
  * Print the timestamp .FRAC part (Microseconds/nanoseconds)
  */
 static void
-ts_frac_print(netdissect_options *ndo, int usec)
+ts_frac_print(netdissect_options *ndo, long usec)
 {
 #ifdef HAVE_PCAP_SET_TSTAMP_PRECISION
 	switch (ndo->ndo_tstamp_precision) {
 
 	case PCAP_TSTAMP_PRECISION_MICRO:
-		ND_PRINT(".%06u", (unsigned)usec);
+		ND_PRINT(".%06ld", usec);
 		break;
 
 	case PCAP_TSTAMP_PRECISION_NANO:
-		ND_PRINT(".%09u", (unsigned)usec);
+		ND_PRINT(".%09ld", usec);
 		break;
 
 	default:
@@ -249,7 +249,7 @@ ts_frac_print(netdissect_options *ndo, int usec)
 		break;
 	}
 #else
-	ND_PRINT(".%06u", (unsigned)usec);
+	ND_PRINT(".%06ld", usec);
 #endif
 }
 
@@ -259,14 +259,14 @@ ts_frac_print(netdissect_options *ndo, int usec)
  *   if date_flag == WITH_DATE print YY:MM:DD before HH:MM:SS.FRAC
  */
 static void
-ts_date_hmsfrac_print(netdissect_options *ndo, int sec, int usec,
+ts_date_hmsfrac_print(netdissect_options *ndo, long sec, long usec,
 		      enum date_flag date_flag, enum time_flag time_flag)
 {
 	time_t Time = sec;
 	struct tm *tm;
 	char timestr[32];
 
-	if ((unsigned)sec & 0x80000000) {
+	if ((unsigned long)sec & 0x80000000) {
 		ND_PRINT("[Error converting time]");
 		return;
 	}
@@ -293,14 +293,14 @@ ts_date_hmsfrac_print(netdissect_options *ndo, int sec, int usec,
  * Print the timestamp - Unix timeval style, as SECS.FRAC.
  */
 static void
-ts_unix_print(netdissect_options *ndo, int sec, int usec)
+ts_unix_print(netdissect_options *ndo, long sec, long usec)
 {
-	if ((unsigned)sec & 0x80000000) {
+	if ((unsigned long)sec & 0x80000000) {
 		ND_PRINT("[Error converting time]");
 		return;
 	}
 
-	ND_PRINT("%u", (unsigned)sec);
+	ND_PRINT("%ld", sec);
 	ts_frac_print(ndo, usec);
 }
 
