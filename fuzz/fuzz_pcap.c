@@ -77,6 +77,8 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
 	memset(&Ndo, 0, sizeof(Ndo));
 	ndo_set_function_pointers(&Ndo);
 	Ndo.program_name = "fuzz";
+	// link-level header
+	Ndo.ndo_eflag = 1;
 	//avoid lookups
 	Ndo.ndo_nflag = 1;
 	//most verbose
