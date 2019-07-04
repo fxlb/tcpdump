@@ -58,6 +58,7 @@ int LLVMFuzzerInitialize(int *argc, char ***argv) {
         ndo->ndo_printf = ndo_mysprintf;
     }
     ndo->program_name = "fuzztcpdump";
+    ndo->ndo_eflag = 1;      // link-level header
     ndo->ndo_nflag = 1;      // don't try to look up addresses
     ndo->ndo_vflag = 9;      // decode as much as we can
     return 0;
