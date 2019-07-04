@@ -69,12 +69,7 @@ fuzz_common(int (*fuzzfunc)(const uint8_t *, size_t), const uint8_t *data, size_
      * longjmp-based truncation: if the infrastructure detects
      * truncation, it longjmps to here.
      */
-    if (setjmp(ndo->ndo_truncated) == 0) {
-	fuzzfunc(data, size);
-    } else {
-	ND_PRINT(" [|%s]", ndo->ndo_protocol);
-	return;
-    }
+    fuzzfunc(data, size);
     if (getenv("REPLICATE_TRUNCATE")) {
 	size_t i;
 	uint8_t *data2;
