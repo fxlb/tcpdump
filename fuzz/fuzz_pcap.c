@@ -64,6 +64,13 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     u_int packets_captured = 0;
     static netdissect_options Ndo;
     static int initialized = 0;
+    static char filename[30];
+    static pid_t mypid = 0;
+
+    if (mypid == 0) {
+        mypid = getpid();
+        snprintf(filename, 30, "/dev/shm/fuzz-%d.pcap", mypid);
+    }
 
     //initialize output file
     if (outfile == NULL) {
@@ -90,12 +97,12 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     }
 
     //rewrite buffer to a file as libpcap does not have buffer inputs
-    if (bufferToFile("/tmp/fuzz.pcap", Data, Size) < 0) {
+    if (bufferToFile(filename, Data, Size) < 0) {
         return 0;
     }
 
     //initialize structure
-    pkts = pcap_open_offline("/tmp/fuzz.pcap", errbuf);
+    pkts = pcap_open_offline(filename, errbuf);
     if (pkts == NULL) {
         fprintf(outfile, "Couldn't open pcap file %s\n", errbuf);
         return 0;
