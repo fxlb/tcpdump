@@ -79,3 +79,4 @@ script:
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ./tcpdump -J; fi
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ./tcpdump --version; fi
   - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then ./tcpdump -#nv -r tests/pktap-heap-overflow.pcap; fi
+  - if [ "$COVERITY_SCAN_BRANCH" != 1 ]; then cat config.h; fi
