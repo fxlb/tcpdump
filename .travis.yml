@@ -28,21 +28,8 @@ env:
     # NOTE: REMOTE= is for the libpcap build, which is done with autotools
     # even if we're building tcpdump with CMake.
     - BUILD_LIBPCAP=no  CMAKE=no  REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=no  REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=no  CMAKE=no  REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=no  REMOTE=enable  CRYPTO=yes
-    - BUILD_LIBPCAP=no  CMAKE=yes REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=yes REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=no  CMAKE=yes REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=no  CMAKE=yes REMOTE=enable  CRYPTO=yes
     - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=yes
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=no
-    - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=enable  CRYPTO=yes
+
 
 matrix:
   fast_finish: true
@@ -92,7 +79,7 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = linux ]; then sudo update-ca-certificates; fi
 
 install:
-  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install libsmi | grep -v '%'; fi
+  - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install libsmi iproute2mac | grep -v '%'; fi
 
 before_script:
   - if [ "$BUILD_LIBPCAP" = yes ]; then (cd .. && echo '$ git clone [...] libpcap.git' && git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/libpcap.git && cd libpcap && ./configure "--${REMOTE}-remote" --prefix=/tmp && make && make install); fi
@@ -119,7 +106,8 @@ script:
   - ./tcpdump -D
   - sudo ./tcpdump -J
   - sudo ./tcpdump -L
-  - sudo ./tcpdump -#n -c 10
+  - ip r
+  - sudo ./tcpdump -#n -c 10 -i $(ip r|grep '^default '|sed 's/.* dev //'|sed 's/proto .*//'|head -1)
   - if [ "$CMAKE" = no ]; then make releasetar; fi
   - echo '$ cat Makefile [...]'; echo travis_fold:start:script.cat_makefile
   - if [ "$CMAKE" = no ]; then cat Makefile | sed -n '1,/DO NOT DELETE THIS LINE -- mkdep uses it/p'; fi
