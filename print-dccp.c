@@ -17,15 +17,10 @@
 
 #include "netdissect-stdinc.h"
 
-#include <stdio.h>
-#include <string.h>
 
 #include "netdissect.h"
 #include "addrtoname.h"
 #include "extract.h"
-#include "ip.h"
-#include "ip6.h"
-#include "ipproto.h"
 
 /* RFC4340: Datagram Congestion Control Protocol (DCCP) */
 

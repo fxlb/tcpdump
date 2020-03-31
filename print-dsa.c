@@ -29,7 +29,6 @@
 
 #include "netdissect.h"
 #include "ethertype.h"
-#include "addrtoname.h"
 #include "extract.h"
 
 /*

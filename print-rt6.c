@@ -27,13 +27,11 @@
 
 #include "netdissect-stdinc.h"
 
-#include <string.h>
 
 #include "netdissect.h"
 #include "addrtoname.h"
 #include "extract.h"
 
-#include "ip6.h"
 
 int
 rt6_print(netdissect_options *ndo, const u_char *bp, const u_char *bp2 _U_)

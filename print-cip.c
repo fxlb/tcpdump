@@ -31,7 +31,6 @@
 #include "netdissect-stdinc.h"
 
 #include "netdissect.h"
-#include "addrtoname.h"
 
 static const unsigned char rfcllc[] = {
 	0xaa,	/* DSAP: non-ISO */

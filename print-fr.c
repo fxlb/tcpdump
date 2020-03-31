@@ -31,7 +31,6 @@
 #include <string.h>
 
 #include "netdissect.h"
-#include "addrtoname.h"
 #include "ethertype.h"
 #include "llc.h"
 #include "nlpid.h"

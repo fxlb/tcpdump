@@ -29,7 +29,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <limits.h>
 
 #include "netdissect.h"
 #include "addrtoname.h"
@@ -38,8 +37,6 @@
 #include "nfs.h"
 #include "nfsfh.h"
 
-#include "ip.h"
-#include "ip6.h"
 #include "rpc_auth.h"
 #include "rpc_msg.h"
 

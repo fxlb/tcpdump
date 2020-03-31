@@ -52,8 +52,6 @@
 #include "ascii_strcasecmp.h"
 #endif
 
-#include "ip.h"
-#include "ip6.h"
 
 /*
  * Copyright (C) 1995, 1996, 1997, and 1998 WIDE Project.

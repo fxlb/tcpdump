@@ -35,7 +35,6 @@
 #include "extract.h"
 #include "addrtoname.h"
 
-#include "ip.h"
 #include "ipproto.h"
 /*
  * RFC 2338 (VRRP v2):

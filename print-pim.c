@@ -31,9 +31,6 @@
 #include "addrtoname.h"
 #include "extract.h"
 
-#include "ip.h"
-#include "ip6.h"
-#include "ipproto.h"
 
 #define PIMV1_TYPE_QUERY           0
 #define PIMV1_TYPE_REGISTER        1

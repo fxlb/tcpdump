@@ -31,7 +31,6 @@
 #include "netdissect-stdinc.h"
 
 #include "netdissect.h"
-#include "addrtoname.h"
 #include "extract.h"
 
 #include "llc.h"

@@ -29,7 +29,6 @@
 
 #include "netdissect.h"
 #include "extract.h"
-#include "addrtoname.h"
 #include "atm.h"
 #include "llc.h"
 

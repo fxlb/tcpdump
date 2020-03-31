@@ -26,8 +26,6 @@
 #include "addrtoname.h"
 #include "addrtostr.h"
 
-#include "ip.h"
-#include "ip6.h"
 #include "ipproto.h"
 #include "af.h"
 

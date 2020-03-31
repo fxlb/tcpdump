@@ -40,7 +40,6 @@
 #include "addrtoname.h"
 #include "extract.h"
 
-#include "ip6.h"
 
 
 /* Mobility header */

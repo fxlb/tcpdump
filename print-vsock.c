@@ -28,7 +28,6 @@
 #endif
 
 #include "netdissect-stdinc.h"
-#include <stddef.h>
 
 #include "netdissect.h"
 #include "extract.h"

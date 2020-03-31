@@ -50,14 +50,11 @@
 #endif /* defined(HAVE_GETRPCBYNUMBER) && defined(HAVE_RPC_RPC_H) */
 
 #include <stdio.h>
-#include <string.h>
 
 #include "netdissect.h"
 #include "addrtoname.h"
 #include "extract.h"
 
-#include "ip.h"
-#include "ip6.h"
 
 #include "rpc_auth.h"
 #include "rpc_msg.h"

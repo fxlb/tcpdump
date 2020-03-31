@@ -28,8 +28,6 @@
 #include "netdissect-stdinc.h"
 
 #include "netdissect.h"
-#include "ethertype.h"
-#include "addrtoname.h"
 #include "extract.h"
 
 #define ETHER_TYPE_LEN		2

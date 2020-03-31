@@ -27,13 +27,10 @@
 
 #include "netdissect-stdinc.h"
 
-#include <string.h>
 
 #include "netdissect.h"
-#include "addrtoname.h"
 #include "extract.h"
 
-#include "ip.h"
 #include "ipproto.h"
 
 void

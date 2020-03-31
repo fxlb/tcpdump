@@ -44,8 +44,6 @@
 #include "netdissect.h"
 #include "addrtoname.h"
 #include "extract.h"
-#include "ip.h"
-#include "ip6.h"
 
 /* Definitions from:
  *

@@ -48,7 +48,6 @@
 #include "addrtoname.h"
 #include "extract.h"
 
-#include "ip.h"
 
 #define FS_RX_PORT	7000
 #define CB_RX_PORT	7001

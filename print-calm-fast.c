@@ -25,7 +25,6 @@
 
 #include "netdissect.h"
 #include "extract.h"
-#include "addrtoname.h"
 
 /*
    ISO 29281:2009
