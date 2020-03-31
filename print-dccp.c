@@ -22,6 +22,8 @@
 #include "addrtoname.h"
 #include "extract.h"
 
+#include "ipproto.h"
+
 /* RFC4340: Datagram Congestion Control Protocol (DCCP) */
 
 /**
