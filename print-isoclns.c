@@ -629,7 +629,7 @@ static void osi_print_cksum(netdissect_options *, const uint8_t *pptr,
 			    uint16_t checksum, int checksum_offset, u_int length);
 static int clnp_print(netdissect_options *, const uint8_t *, u_int);
 static void esis_print(netdissect_options *, const uint8_t *, u_int);
-static int isis_print(netdissect_options *, const uint8_t *, u_int);
+extern int isis_print(netdissect_options *, const uint8_t *, u_int);
 
 struct isis_metric_block {
     nd_uint8_t metric_default;
@@ -2456,7 +2456,7 @@ isis_clear_checksum_lifetime(void *header)
     } \
     length -= (decr);
 
-static int
+extern int
 isis_print(netdissect_options *ndo,
            const uint8_t *p, u_int length)
 {
