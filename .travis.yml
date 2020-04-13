@@ -119,6 +119,7 @@ script:
   - if [ "$BUILD_LIBPCAP" = yes ]; then make check; fi
   - ./tcpdump --version
   - ./tcpdump -h
+  - if [ "$TRAVIS_OS_NAME" = linux ]; then sudo modprobe usbmon; fi
   - ./tcpdump -D
   - sudo ./tcpdump -J
   - sudo ./tcpdump -L
