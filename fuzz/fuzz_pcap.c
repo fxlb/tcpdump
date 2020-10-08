@@ -112,7 +112,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         pcap_close(pkts);
         return 0;
     }
-    Ndo.ndo_if_printer = get_if_printer(&Ndo, pcap_datalink(pkts));
+    Ndo.ndo_if_printer = get_if_printer(pcap_datalink(pkts));
 
     //loop over packets
     r = pcap_next_ex(pkts, &header, &pkt);
