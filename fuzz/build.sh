@@ -3,7 +3,7 @@
 # Use $OUT as a signal that we're being run inside the oss-fuzz
 # build_fuzzers target.  See
 # https://github.com/google/oss-fuzz/blob/master/docs/new_project_guide.md
-# for the assumptions about the enviroment.
+# for the assumptions about the environment.
 if [ -z "$OUT" ]
 then
     echo "This script is only used when building the fuzz targets"
