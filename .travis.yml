@@ -145,6 +145,7 @@ before_install:
   - gem install travis-conditions
   - if [ "$TRAVIS_OS_NAME" = osx ]; then brew update >/dev/null; fi
   - if [ "$TRAVIS_OS_NAME" = linux ]; then apt list --installed 'lib*-dev'; fi
+  - if [ "$TRAVIS_OS_NAME" = linux ]; then ls -ltra /usr/local/lib; fi
 
 install:
   - if [ "$TRAVIS_OS_NAME" = osx ]; then brew install libsmi | grep -v '%'; fi
@@ -168,6 +169,7 @@ script:
   - echo '$ make install [...]' && echo travis_fold:start:script.make_install
   - PATH=$PATH sudo make install
   - echo -n travis_fold:end:script.make_install
+  - if [ "$TRAVIS_OS_NAME" = linux ]; then ls -ltra /usr/local/lib; fi
   - if [ "$TRAVIS_OS_NAME" = linux ]; then echo '$ ldd tcpdump' && echo travis_fold:start:script.ldd_tcpdump; fi
   - if [ "$TRAVIS_OS_NAME" = linux ]; then ldd tcpdump; fi
   - if [ "$TRAVIS_OS_NAME" = linux ]; then echo -n travis_fold:end:script.ldd_tcpdump; fi
