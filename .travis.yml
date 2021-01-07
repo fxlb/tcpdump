@@ -168,7 +168,7 @@ script:
   - if [ "$CMAKE" = yes ]; then export PCAP_ROOT=/tmp; fi
   - if [ "$CMAKE" = yes ]; then cmake -DWITH_CRYPTO="$CRYPTO" -DCMAKE_PREFIX_PATH=/tmp -DCMAKE_INSTALL_PREFIX=/tmp ..; fi
   - if [ "$CMAKE" = yes ]; then echo -n travis_fold:end:script.cmake; fi
-  - if [ "$BUILD_LIBPCAP" = no ]; then make -s CFLAGS=-Werror; else make -s CFLAGS=-Werror CPPFLAGS="-I../libpcap"; fi
+  - if [ "$BUILD_LIBPCAP" = no ]; then make -s CFLAGS=-Werror; else make -s CFLAGS=-Werror CPPFLAGS="-I/tmp"; fi
   - echo '$ make install [...]' && echo travis_fold:start:script.make_install
   - PATH=$PATH make install
   - echo -n travis_fold:end:script.make_install
