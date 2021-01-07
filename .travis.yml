@@ -154,7 +154,6 @@ install:
 
 before_script:
   - if [ "$BUILD_LIBPCAP" = yes ]; then (cd .. && echo '$ git clone [...] libpcap.git' && git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/libpcap.git && cd libpcap && ./configure "--${REMOTE}-remote" --prefix=/tmp && make && make install); fi
-  - sudo apt remove libpcap-dev
 
 script:
   - if [ "$COVERITY_SCAN_BRANCH" = 1 ]; then exit 0; fi
