@@ -109,7 +109,7 @@ env:
 #   - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=no
 #   - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=disable CRYPTO=yes
 #   - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=no
-#   - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
+    - BUILD_LIBPCAP=yes CMAKE=no  REMOTE=enable  CRYPTO=yes
 # The 'BUILD_LIBPCAP=yes CMAKE=yes' builds currently fail
 #   - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=no
 #   - BUILD_LIBPCAP=yes CMAKE=yes REMOTE=disable CRYPTO=yes
