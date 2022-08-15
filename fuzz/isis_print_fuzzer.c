@@ -25,6 +25,8 @@
 
 extern netdissect_options *ndo;
 
+extern int isis_print(netdissect_options *, const uint8_t *, u_int);
+
 int isis_print_fuzz(const uint8_t *data, size_t size) {
     int fakelen = 10000;
 
