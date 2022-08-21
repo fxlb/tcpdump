@@ -3286,18 +3286,9 @@ bgp_print(netdissect_options *ndo,
     };
     const struct bgp *bgp_header;
     uint16_t hlen;
-    FILE* file;
-    static u_int count;
-    char name[20];
 
     ndo->ndo_protocol = "bgp";
     ND_PRINT(": BGP");
-
-    sprintf(name, "bgp_corpus/%u", count);
-    file = fopen(name, "w");
-    fwrite(dat, 1, ep - dat, file);
-    count++;
-    fclose(file);
 
     if (ndo->ndo_vflag < 1) /* lets be less chatty */
         return;
