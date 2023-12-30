@@ -907,3 +907,6 @@ fletcher-checksum-negative-shift fletcher-checksum-negative-shift.pcap fletcher-
 # ipv6_mobility_1.pcap is built with scapy
 ipv6_mobility_1 ipv6_mobility_1.pcap ipv6_mobility_1.out
 ipv6_mobility_1-v ipv6_mobility_1.pcap ipv6_mobility_1-v.out -v
+
+# AccECN tests
+accecn_handshake	accecn_handshake.pcap		accecn_handshake.out	-v
