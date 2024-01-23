@@ -31,6 +31,8 @@
 #include <sys/types.h>
 #include <setjmp.h>
 #include <time.h>
+#include <stdlib.h>
+
 #include "status-exit-codes.h"
 #include "funcattrs.h" /* for PRINTFLIKE_FUNCPTR() */
 
@@ -378,9 +380,10 @@ NORETURN void nd_trunc_longjmp(netdissect_options *ndo);
 #define IS_NOT_NEGATIVE(x) (((x) > 0) || ((x) == 0))
 
 #define ND_TTEST_LEN(p, l) \
+  ((((uintptr_t)(p) < (uintptr_t)ndo->ndo_packetp) ? fprintf(stdout, "_WARNING_ %zu [%s:%d(%s)] ", (uintptr_t)(p) - (uintptr_t)ndo->ndo_packetp , __FILE__, __LINE__, __func__), fflush(stdout), abort(): 0), \
   (IS_NOT_NEGATIVE(l) && \
 	((uintptr_t)ndo->ndo_snapend - (l) <= (uintptr_t)ndo->ndo_snapend && \
-         (uintptr_t)(p) <= (uintptr_t)ndo->ndo_snapend - (l)))
+         (uintptr_t)(p) <= (uintptr_t)ndo->ndo_snapend - (l))))
 
 /* True if "*(p)" was captured */
 #define ND_TTEST_SIZE(p) ND_TTEST_LEN(p, sizeof(*(p)))
