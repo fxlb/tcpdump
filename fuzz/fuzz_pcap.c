@@ -90,6 +90,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
 	Ndo.ndo_nflag = 1;
 	//most verbose
 	Ndo.ndo_vflag = 9;
+	Ndo.ndo_xflag = 1;
 	//to out outputfile
 	Ndo.ndo_printf=fuzz_ndo_printf;
 	init_print(&Ndo, 0, 0);
