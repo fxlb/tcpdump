@@ -11,6 +11,7 @@
 #include <pcap/pcap.h>
 #include "netdissect.h"
 #include "print.h"
+#include "netdissect-ctype.h"
 
 FILE * outfile = NULL;
 
@@ -19,10 +20,27 @@ fuzz_ndo_printf(netdissect_options *ndo, const char *fmt, ...)
 {
     va_list args;
     int ret;
+    char buf[65536] = {0};
 
     va_start(args, fmt);
     ret = vfprintf(outfile, fmt, args);
     va_end(args);
+
+    va_start(args, fmt);
+    ret = vsnprintf(buf, sizeof(buf), fmt, args);
+    va_end(args);
+
+    if (ret >= 0) {
+        char c;
+
+        for (int i = 0; i < ret; i++) {
+            c =  buf[i];
+            if (!(ND_ASCII_ISPRINT(c) || c == '\t' || c == '\n')) {
+                fflush(stdout);
+                // abort();
+            }
+        }
+    }
 
     return (ret);
 }
