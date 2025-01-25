@@ -734,6 +734,7 @@ void
 isoclns_print(netdissect_options *ndo, const u_char *p, u_int length)
 {
 	ndo->ndo_protocol = "isoclns";
+	ND_LCHECK_SANITY(length, p);
 
 	if (ndo->ndo_eflag)
 		ND_PRINT("OSI NLPID %s (0x%02x): ",
@@ -833,6 +834,7 @@ clnp_print(netdissect_options *ndo,
         uint8_t rfd_error,rfd_error_major,rfd_error_minor;
 
 	ndo->ndo_protocol = "clnp";
+	ND_LCHECK_SANITY(length, pptr);
 	clnp_header = (const struct clnp_header_t *) pptr;
         ND_TCHECK_SIZE(clnp_header);
 
@@ -1170,6 +1172,7 @@ esis_print(netdissect_options *ndo,
 	const struct esis_header_t *esis_header;
 
 	ndo->ndo_protocol = "esis";
+	ND_LCHECK_SANITY(length, pptr);
 	if (!ndo->ndo_eflag)
 		ND_PRINT("ES-IS");
 
@@ -2487,6 +2490,7 @@ isis_print(netdissect_options *ndo,
     int sigcheck;
 
     ndo->ndo_protocol = "isis";
+    ND_LCHECK_SANITY(length, p);
     packet_len=length;
     optr = p; /* initialize the _o_riginal pointer to the packet start -
                  need it for parsing the checksum TLV and authentication

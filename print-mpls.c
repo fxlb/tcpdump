@@ -65,6 +65,7 @@ mpls_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	enum mpls_packet_type pt = PT_UNKNOWN;
 
 	ndo->ndo_protocol = "mpls";
+	ND_LCHECK_SANITY(length, bp);
 	p = bp;
 	nd_print_protocol_caps(ndo);
 	do {

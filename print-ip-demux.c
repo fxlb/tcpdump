@@ -41,6 +41,7 @@ ip_demux_print(netdissect_options *ndo,
 	int advance;
 	const char *p_name;
 
+	ND_LCHECK_SANITY(length, bp);
 	advance = 0;
 
 again:

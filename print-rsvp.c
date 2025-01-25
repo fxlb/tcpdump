@@ -1901,6 +1901,7 @@ rsvp_print(netdissect_options *ndo,
     u_short plen, tlen;
 
     ndo->ndo_protocol = "rsvp";
+    ND_LCHECK_SANITY(len, pptr);
     tptr=pptr;
 
     rsvp_com_header = (const struct rsvp_common_header *)pptr;

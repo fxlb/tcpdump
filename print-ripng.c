@@ -113,6 +113,7 @@ ripng_print(netdissect_options *ndo, const u_char *dat, unsigned int length)
 	u_int j;
 
 	ndo->ndo_protocol = "ripng";
+	ND_LCHECK_SANITY(length, dat);
 	vers = GET_U_1(rp->rip6_vers);
 	if (vers != RIP6_VERSION) {
 		nd_print_protocol(ndo);

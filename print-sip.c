@@ -48,5 +48,6 @@ void
 sip_print(netdissect_options *ndo, const u_char *pptr, u_int len)
 {
 	ndo->ndo_protocol = "sip";
+	ND_LCHECK_SANITY(len, pptr);
 	txtproto_print(ndo, pptr, len, sipcmds, RESP_CODE_SECOND_TOKEN);
 }

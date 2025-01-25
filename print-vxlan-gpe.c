@@ -89,6 +89,7 @@ vxlan_gpe_print(netdissect_options *ndo, const u_char *bp, u_int len)
      * the payload MUST be ETHERNET(L2) as defined by [RFC7348]."
      */
     ndo->ndo_protocol = "vxlan_gpe";
+    ND_LCHECK_SANITY(len, bp);
     ND_PRINT("VXLAN-GPE, ");
     if (len < VXLAN_GPE_HDR_LEN) {
         ND_PRINT(" (len %u < %u)", len, VXLAN_GPE_HDR_LEN);

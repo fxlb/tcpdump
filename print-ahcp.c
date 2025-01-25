@@ -322,6 +322,7 @@ ahcp_print(netdissect_options *ndo,
 	uint8_t version;
 
 	ndo->ndo_protocol = "ahcp";
+	ND_LCHECK_SANITY(len, cp);
 	nd_print_protocol_caps(ndo);
 	if (len < 2)
 		goto invalid;

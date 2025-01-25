@@ -177,6 +177,7 @@ tcp_print(netdissect_options *ndo,
         u_int header_len;	/* Header length in bytes */
 
         ndo->ndo_protocol = "tcp";
+        ND_LCHECK_SANITY(length, bp);
         tp = (const struct tcphdr *)bp;
         ip = (const struct ip *)bp2;
         if (IP_V(ip) == 6)

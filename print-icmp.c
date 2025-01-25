@@ -679,6 +679,7 @@ icmp_print(netdissect_options *ndo, const u_char *bp, u_int plen,
 	struct cksum_vec vec[1];
 
 	ndo->ndo_protocol = "icmp";
+	ND_LCHECK_SANITY(plen, bp);
 	dp = (const struct icmp *)bp;
 	ext_dp = (const struct icmp_ext_t *)bp;
 	str = buf;

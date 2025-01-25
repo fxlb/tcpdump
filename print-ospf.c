@@ -1462,6 +1462,7 @@ ospf_print(netdissect_options *ndo,
 	const char *cp;
 
 	ndo->ndo_protocol = "ospf2";
+	ND_LCHECK_SANITY(length, bp);
 	op = (const struct ospfhdr *)bp;
 
 	/* XXX Before we do anything else, strip off the MD5 trailer */

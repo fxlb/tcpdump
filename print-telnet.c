@@ -498,6 +498,7 @@ telnet_print(netdissect_options *ndo, const u_char *sp, u_int length)
 	int l;
 
 	ndo->ndo_protocol = "telnet";
+	ND_LCHECK_SANITY(length, sp);
 	osp = sp;
 
 	while (length > 0 && GET_U_1(sp) == IAC) {

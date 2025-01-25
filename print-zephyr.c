@@ -168,6 +168,7 @@ zephyr_print(netdissect_options *ndo, const u_char *cp, u_int length)
     int lose = 0;
 
     ndo->ndo_protocol = "zephyr";
+    ND_LCHECK_SANITY(length, cp);
     /* squelch compiler warnings */
 
 #define PARSE_STRING						\

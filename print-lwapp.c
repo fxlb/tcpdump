@@ -650,6 +650,7 @@ lwapp_control_print(netdissect_options *ndo,
 	 * this case should be exactly one LWAPP control header followed by 0 or
 	 * more message elements.
 	 */
+	ND_LCHECK_SANITY(len, cp);
 	const uint16_t ctrlhdrlen = (uint16_t)sizeof(struct lwapp_control_header);
 	ND_ICHECKMSG_U("transport payload length", len, <, ctrlhdrlen);
 	const struct lwapp_control_header *ctrlhdr =
@@ -711,6 +712,7 @@ lwapp_print(netdissect_options *ndo,
             const u_char *pptr, const u_int pktlen, const u_char has_ap_ident)
 {
 	ndo->ndo_protocol = "lwapp";
+	ND_LCHECK_SANITY(len, pptr);
 	nd_print_protocol_caps(ndo);
 
 	const u_char *cp = pptr;

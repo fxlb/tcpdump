@@ -732,6 +732,7 @@ l2tp_print(netdissect_options *ndo, const u_char *dat, u_int length)
 	uint16_t l2tp_len;
 
 	ndo->ndo_protocol = "l2tp";
+	ND_LCHECK_SANITY(length, dat);
 	flag_t = flag_l = flag_s = flag_o = FALSE;
 
 	if ((GET_BE_U_2(ptr) & L2TP_VERSION_MASK) == L2TP_VERSION_L2TP) {

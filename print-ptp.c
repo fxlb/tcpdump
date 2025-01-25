@@ -462,6 +462,7 @@ ptp_print(netdissect_options *ndo, const u_char *bp, u_int length)
      * version 2.1.
      */
     ndo->ndo_protocol = "ptp";
+    ND_LCHECK_SANITY(length, bp);
     nd_print_protocol_caps(ndo);
     ND_ICHECK_U(length, <, PTP_HDR_LEN);
     major_vers = GET_BE_U_2(bp) & PTP_MAJOR_VERS_MASK;

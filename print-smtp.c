@@ -23,5 +23,6 @@ void
 smtp_print(netdissect_options *ndo, const u_char *pptr, u_int len)
 {
 	ndo->ndo_protocol = "smtp";
+	ND_LCHECK_SANITY(len, pptr);
 	txtproto_print(ndo, pptr, len, NULL, 0);
 }
