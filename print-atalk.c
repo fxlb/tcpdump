@@ -164,6 +164,7 @@ llap_print(netdissect_options *ndo,
 	u_int hdrlen;
 
 	ndo->ndo_protocol = "llap";
+	ND_LCHECK_SANITY(length, bp);
 	ND_ICHECKMSG_ZU("LLAP length", length, <, sizeof(*lp));
 	lp = (const struct LAP *)bp;
 	bp += sizeof(*lp);
@@ -231,6 +232,7 @@ atalk_print(netdissect_options *ndo,
 	u_short snet;
 
 	ndo->ndo_protocol = "atalk";
+	ND_LCHECK_SANITY(length, bp);
         if(!ndo->ndo_eflag)
             ND_PRINT("AT ");
 
@@ -263,6 +265,7 @@ aarp_print(netdissect_options *ndo,
 	GET_U_1(&ap->member[3]))
 
 	ndo->ndo_protocol = "aarp";
+	ND_LCHECK_SANITY(length, bp);
 	ND_PRINT("aarp ");
 	ap = (const struct aarp *)bp;
 	ND_ICHECK_ZU(length, <, sizeof(*ap));

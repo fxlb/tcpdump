@@ -144,6 +144,7 @@ zmtp1_print(netdissect_options *ndo, const u_char *cp, u_int len)
 	const u_char *ep = ND_MIN(ndo->ndo_snapend, cp + len);
 
 	ndo->ndo_protocol = "zmtp1";
+	ND_LCHECK_SANITY(len, cp);
 	ND_PRINT(": ZMTP/1.0");
 	while (cp < ep)
 		cp = zmtp1_print_frame(ndo, cp, ep);
@@ -211,6 +212,7 @@ zmtp1_datagram_print(netdissect_options *ndo, const u_char *cp, const u_int len)
 	const u_char *ep = ND_MIN(ndo->ndo_snapend, cp + len);
 
 	ndo->ndo_protocol = "zmtp1";
+	ND_LCHECK_SANITY(len, cp);
 	cp = zmtp1_print_intermediate_part(ndo, cp, len);
 	while (cp < ep)
 		cp = zmtp1_print_frame(ndo, cp, ep);

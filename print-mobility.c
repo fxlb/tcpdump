@@ -193,6 +193,7 @@ mobility_print(netdissect_options *ndo,
 	ndo->ndo_protocol = "mobility";
 	nd_print_protocol(ndo);
 	ND_PRINT(": ");
+	ND_LCHECK_SANITY(length, bp);
 	mh = (const struct ip6_mobility *)bp;
 
 	pproto = GET_U_1(mh->ip6m_pproto);

@@ -53,6 +53,7 @@ vxlan_print(netdissect_options *ndo, const u_char *bp, u_int length)
     uint8_t flags;
 
     ndo->ndo_protocol = "vxlan";
+    ND_LCHECK_SANITY(len, bp);
     nd_print_protocol_caps(ndo);
     ND_ICHECK_U(length, <, VXLAN_HDR_LEN);
 

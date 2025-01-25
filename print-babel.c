@@ -55,6 +55,7 @@ babel_print(netdissect_options *ndo,
             const u_char *cp, u_int length)
 {
     ndo->ndo_protocol = "babel";
+    ND_LCHECK_SANITY(length, cp);
     nd_print_protocol(ndo);
 
     ND_TCHECK_4(cp);

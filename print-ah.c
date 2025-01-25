@@ -42,6 +42,7 @@ ah_print(netdissect_options *ndo, const u_char *bp)
 	const u_char *p;
 
 	ndo->ndo_protocol = "ah";
+	ND_LCHECK_SANITY(length, bp);
 	ah = (const struct ah *)bp;
 
 	nd_print_protocol_caps(ndo);

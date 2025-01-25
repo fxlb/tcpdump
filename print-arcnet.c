@@ -124,6 +124,7 @@ arcnet_print(netdissect_options *ndo, const u_char *bp, u_int length, int phds,
 	const char *arctypename;
 
 	ndo->ndo_protocol = "arcnet";
+	ND_LCHECK_SANITY(length, bp);
 	ap = (const struct arc_header *)bp;
 
 	if (ndo->ndo_qflag) {

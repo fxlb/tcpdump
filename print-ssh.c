@@ -92,6 +92,7 @@ void
 ssh_print(netdissect_options *ndo, const u_char *pptr, u_int len)
 {
 	ndo->ndo_protocol = "ssh";
+	ND_LCHECK_SANITY(len, pptr);
 
 	ssh_print_version(ndo, pptr, len);
 }

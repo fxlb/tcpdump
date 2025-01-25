@@ -483,6 +483,7 @@ decnet_print(netdissect_options *ndo,
 	const u_char *nspp;
 
 	ndo->ndo_protocol = "decnet";
+	ND_LCHECK_SANITY(length, ap);
 	if (length < sizeof(struct shorthdr)) {
 		ND_PRINT(" (length %u < %zu)", length, sizeof(struct shorthdr));
 		goto invalid;

@@ -622,6 +622,7 @@ ldp_print(netdissect_options *ndo,
     u_int processed;
 
     ndo->ndo_protocol = "ldp";
+    ND_LCHECK_SANITY(len, pptr);
     while (len > (sizeof(struct ldp_common_header) + sizeof(struct ldp_msg_header))) {
         processed = ldp_pdu_print(ndo, pptr);
         if (processed == 0)

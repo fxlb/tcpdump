@@ -51,6 +51,7 @@ msnlb_print(netdissect_options *ndo, const u_char *bp)
 	const struct msnlb_heartbeat_pkt *hb;
 
 	ndo->ndo_protocol = "msnlb";
+	ND_LCHECK_SANITY(length, bp);
 	hb = (const struct msnlb_heartbeat_pkt *)bp;
 
 	ND_PRINT("MS NLB heartbeat");

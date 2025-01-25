@@ -70,6 +70,7 @@ mobile_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	u_char osp =0;			/* old source address present */
 
 	ndo->ndo_protocol = "mobile";
+	ND_LCHECK_SANITY(length, bp);
 	mob = (const struct mobile_ip *)bp;
 
 	nd_print_protocol(ndo);

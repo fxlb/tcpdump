@@ -3295,6 +3295,7 @@ isakmp_print(netdissect_options *ndo,
 	u_int major, minor;
 
 	ndo->ndo_protocol = "isakmp";
+	ND_LCHECK_SANITY(length, bp);
 #ifdef HAVE_LIBCRYPTO
 	/* initialize SAs */
 	if (ndo->ndo_sa_list_head == NULL) {
@@ -3351,6 +3352,7 @@ isakmp_rfc3948_print(netdissect_options *ndo,
 		     const u_char *bp2, int ver, int fragmented, u_int ttl_hl)
 {
 	ndo->ndo_protocol = "isakmp_rfc3948";
+	ND_LCHECK_SANITY(length, bp);
 	if(length == 1 && GET_U_1(bp)==0xff) {
 		ND_PRINT("isakmp-nat-keep-alive");
 		return;

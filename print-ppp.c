@@ -1438,6 +1438,7 @@ static void
 handle_ppp(netdissect_options *ndo,
            u_int proto, const u_char *p, u_int length)
 {
+/* ND_DEBUG */
 	if ((proto & 0xff00) == 0x7e00) { /* is this an escape code ? */
 		ppp_hdlc(ndo, p - 1, length);
 		return;
@@ -1505,6 +1506,9 @@ ppp_print(netdissect_options *ndo,
 	u_int hdr_len = 0;
 
 	ndo->ndo_protocol = "ppp";
+	ND_LCHECK_SANITY(length, p);
+	/* nd_print_protocol_caps(ndo); */
+/* ND_DEBUG */
 	/*
 	 * Here, we assume that p points to the Address and Control
 	 * field (if they present).

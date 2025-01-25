@@ -228,6 +228,7 @@ krb_print(netdissect_options *ndo,
 	const struct krb *kp;
 
 	ndo->ndo_protocol = "kerberos";
+	ND_LCHECK_SANITY(0, dat);
 	nd_print_protocol(ndo);
 
 	kp = (const struct krb *)dat;

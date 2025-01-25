@@ -523,6 +523,7 @@ lspping_print(netdissect_options *ndo,
     } subtlv_ptr;
 
     ndo->ndo_protocol = "lspping";
+    ND_LCHECK_SANITY(len, pptr);
     tptr=pptr;
     lspping_com_header = (const struct lspping_common_header *)pptr;
     if (len < sizeof(struct lspping_common_header))

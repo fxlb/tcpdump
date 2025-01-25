@@ -151,6 +151,7 @@ token_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen
 	int seg;
 
 	ndo->ndo_protocol = "token-ring";
+	ND_LCHECK_SANITY(length, p);
 	trp = (const struct token_header *)p;
 
 	if (caplen < TOKEN_HDRLEN) {

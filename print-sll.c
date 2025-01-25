@@ -153,6 +153,7 @@ sll_print(netdissect_options *ndo, const struct sll_header *sllp, u_int length)
 	u_short ether_type;
 
 	ndo->ndo_protocol = "sll";
+	// ND_LCHECK_SANITY(length, cp);
         ND_PRINT("%3s ",
 		 tok2str(sll_pkttype_values,"?",GET_BE_U_2(sllp->sll_pkttype)));
 
@@ -337,6 +338,7 @@ sll2_print(netdissect_options *ndo, const struct sll2_header *sllp, u_int length
 	u_short ether_type;
 
 	ndo->ndo_protocol = "sll2";
+	// ND_LCHECK_SANITY(length, cp);
 	ND_PRINT("ifindex %u ", GET_BE_U_4(sllp->sll2_if_index));
 
 	/*

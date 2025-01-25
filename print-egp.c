@@ -256,8 +256,8 @@ egp_print(netdissect_options *ndo,
 	u_int status;
 
 	ndo->ndo_protocol = "egp";
+	ND_LCHECK_SANITY(length, bp);
 	nd_print_protocol_caps(ndo);
-
 	egp = (const struct egp_packet *)bp;
 	ND_ICHECK_ZU(length, <, sizeof(*egp));
 
