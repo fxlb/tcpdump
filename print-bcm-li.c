@@ -66,6 +66,7 @@ bcm_li_print(netdissect_options *ndo,
 	u_int shim, direction, pkt_type, pkt_subtype, li_id;
 
 	ndo->ndo_protocol = "bcm_li";
+	ND_LCHECK_SANITY(length, bp);
 	if (length < BCM_LI_SHIM_LEN) {
 	    ND_PRINT(" (length %u < %u)", length, BCM_LI_SHIM_LEN);
 	    goto invalid;

@@ -199,6 +199,7 @@ nhrp_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	uint8_t				spl, dpl;
 
 	ndo->ndo_protocol = "nhrp";
+	ND_LCHECK_SANITY(length, bp);
 	nd_print_protocol_caps(ndo);
 	ND_PRINT(": ");
 

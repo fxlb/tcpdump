@@ -762,6 +762,7 @@ esp_print(netdissect_options *ndo,
 #endif
 
 	ndo->ndo_protocol = "esp";
+	ND_LCHECK_SANITY(length, bp);
 	esp = (const struct newesp *)bp;
 
 	nd_print_protocol_caps(ndo);

@@ -423,6 +423,7 @@ ntp_print(netdissect_options *ndo,
 	uint8_t status;
 
 	ndo->ndo_protocol = "ntp";
+	ND_LCHECK_SANITY(length, cp);
 	status = GET_U_1(bp->td.status);
 
 	version = (status & VERSIONMASK) >> VERSIONSHIFT;

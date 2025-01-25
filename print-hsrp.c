@@ -98,6 +98,7 @@ hsrp_print(netdissect_options *ndo, const u_char *bp, u_int len)
 	uint8_t version;
 
 	ndo->ndo_protocol = "hsrp";
+	ND_LCHECK_SANITY(len, bp);
 	version = GET_U_1(hp->hsrp_version);
 	ND_PRINT("HSRPv%u", version);
 	if (version != 0)

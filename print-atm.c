@@ -361,6 +361,7 @@ atm_print(netdissect_options *ndo,
           u_int caplen)
 {
 	ndo->ndo_protocol = "atm";
+	ND_LCHECK_SANITY(length, p);
 	if (ndo->ndo_eflag)
 		ND_PRINT("VPI:%u VCI:%u ", vpi, vci);
 
@@ -436,6 +437,7 @@ oam_print(netdissect_options *ndo,
     } oam_ptr;
 
     ndo->ndo_protocol = "oam";
+    ND_LCHECK_SANITY(length, p);
     cell_header = GET_BE_U_4(p + hec);
     cell_type = (GET_U_1((p + ATM_HDR_LEN_NOHEC + hec)) >> 4) & 0x0f;
     func_type = GET_U_1((p + ATM_HDR_LEN_NOHEC + hec)) & 0x0f;

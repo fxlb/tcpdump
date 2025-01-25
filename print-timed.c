@@ -115,6 +115,7 @@ timed_print(netdissect_options *ndo,
 	int sec, usec;
 
 	ndo->ndo_protocol = "timed";
+	ND_LCHECK_SANITY(length, bp);
 	tsp_type = GET_U_1(tsp->tsp_type);
 	ND_PRINT("%s", tok2str(tsptype_str, "(tsp_type %#x)", tsp_type));
 

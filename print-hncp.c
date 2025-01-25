@@ -47,6 +47,7 @@ hncp_print(netdissect_options *ndo,
            const u_char *cp, u_int length)
 {
     ndo->ndo_protocol = "hncp";
+    ND_LCHECK_SANITY(length, cp);
     ND_PRINT("hncp (%u)", length);
     hncp_print_rec(ndo, cp, length, 1);
 }

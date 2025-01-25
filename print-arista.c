@@ -107,6 +107,7 @@ arista_ethertype_print(netdissect_options *ndo, const u_char *bp, u_int len _U_)
 	u_short bytesConsumed = 0;
 
 	ndo->ndo_protocol = "arista";
+	ND_LCHECK_SANITY(len, bp);
 
 	subTypeId = GET_BE_U_2(bp);
 	bp += 2;

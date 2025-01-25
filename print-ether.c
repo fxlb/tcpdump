@@ -424,6 +424,7 @@ ether_switch_tag_print(netdissect_options *ndo, const u_char *p, u_int length,
     void (*print_switch_tag)(netdissect_options *, const u_char *),
     u_int switch_tag_len)
 {
+	ND_LCHECK_SANITY(length, p);
 	return ether_common_print(ndo, p, length, caplen, print_switch_tag,
 				  switch_tag_len, NULL, NULL);
 }
@@ -443,6 +444,7 @@ ether_print(netdissect_options *ndo,
 	    const u_char *encap_header_arg)
 {
 	ndo->ndo_protocol = "ether";
+	ND_LCHECK_SANITY(length, p);
 	return ether_common_print(ndo, p, length, caplen, NULL, 0,
 				  print_encap_header, encap_header_arg);
 }
@@ -528,6 +530,8 @@ ethertype_print(netdissect_options *ndo,
 		u_int length, u_int caplen,
 		const struct lladdr_info *src, const struct lladdr_info *dst)
 {
+	/* ND_PRINT("[caplen=%u] ", caplen); */
+	ND_LCHECK_SANITY(length, p);
 	switch (ether_type) {
 
 	case ETHERTYPE_IP:

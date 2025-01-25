@@ -298,6 +298,7 @@ bootp_print(netdissect_options *ndo,
 	uint8_t bp_op, bp_htype, bp_hlen;
 
 	ndo->ndo_protocol = "bootp";
+	ND_LCHECK_SANITY(length, cp);
 	bp = (const struct bootp *)cp;
 	bp_op = GET_U_1(bp->bp_op);
 	ND_PRINT("BOOTP/DHCP, %s",

@@ -824,6 +824,7 @@ sflow_print(netdissect_options *ndo,
     uint32_t ip_version;
 
     ndo->ndo_protocol = "sflow";
+    ND_LCHECK_SANITY(len, pptr);
     tptr = pptr;
     tlen = len;
     sflow_datagram = (const struct sflow_datagram_t *)pptr;

@@ -1046,6 +1046,7 @@ icmp6_print(netdissect_options *ndo,
 	u_int prot;
 
 	ndo->ndo_protocol = "icmp6";
+	ND_LCHECK_SANITY(length, bp);
 	dp = (const struct icmp6_hdr *)bp;
 	ip = (const struct ip6_hdr *)bp2;
 	oip = (const struct ip6_hdr *)(dp + 1);

@@ -260,6 +260,7 @@ cdp_print(netdissect_options *ndo,
 	uint16_t checksum;
 
 	ndo->ndo_protocol = "cdp";
+	ND_LCHECK_SANITY(length, tptr);
 
 	if (length < CDP_HEADER_LEN) {
 		ND_PRINT(" (packet length %u < %u)", length, CDP_HEADER_LEN);

@@ -162,6 +162,7 @@ sunrpc_print(netdissect_options *ndo, const u_char *bp,
 	char srcid[20], dstid[20];	/*fits 32bit*/
 
 	ndo->ndo_protocol = "sunrpc";
+	ND_LCHECK_SANITY(length, bp);
 	rp = (const struct sunrpc_msg *)bp;
 	ND_TCHECK_SIZE(rp);
 

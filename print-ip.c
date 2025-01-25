@@ -330,6 +330,7 @@ ip_print(netdissect_options *ndo,
 	int presumed_tso = 0;
 
 	ndo->ndo_protocol = "ip";
+	ND_LCHECK_SANITY(length, bp);
 	ip = (const struct ip *)bp;
 
 	if (!ndo->ndo_eflag) {
@@ -475,6 +476,7 @@ ip_print(netdissect_options *ndo,
 				 hlen);
 			nd_trunc_longjmp(ndo);
 		}
+		ND_LCHECK_SANITY(length, (const u_char *)ip + hlen);
 		ip_demux_print(ndo, (const u_char *)ip + hlen, len, 4,
 			       off & IP_MF, GET_U_1(ip->ip_ttl), nh, bp);
 	} else {

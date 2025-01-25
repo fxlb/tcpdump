@@ -108,6 +108,7 @@ quic_detect(netdissect_options *ndo, const u_char *p, const u_int len)
 {
 	uint8_t first_octet;
 
+	ND_LCHECK_SANITY(len, p);
 	if (len < 1)
 		return 0;
 	first_octet = GET_U_1(p);
@@ -275,6 +276,7 @@ quic_print(netdissect_options *ndo, const u_char *bp)
 	const uint8_t *end = bp + ND_BYTES_AVAILABLE_AFTER(bp);
 
 	ndo->ndo_protocol = "quic";
+	ND_LCHECK_SANITY(0, bp);
 	nd_print_protocol(ndo);
 
 	while (bp < end) {

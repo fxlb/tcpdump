@@ -104,6 +104,7 @@ loopback_print(netdissect_options *ndo,
 	uint16_t skipCount;
 
 	ndo->ndo_protocol = "loopback";
+	ND_LCHECK_SANITY(len, cp);
 	ND_PRINT("Loopback");
 	ND_ICHECK_U(length, <, 2);
 	/* skipCount */

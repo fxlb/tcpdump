@@ -71,6 +71,7 @@ erspan_i_ii_print(netdissect_options *ndo, uint16_t flags, const u_char *bp, u_i
 	uint32_t hdr, ver, vlan, cos, en, sid;
 
 	ndo->ndo_protocol = "erspan";
+	ND_LCHECK_SANITY(len, bp);
 	nd_print_protocol(ndo);
 
 	if (!(flags & GRE_SP)) {
@@ -203,6 +204,7 @@ erspan_iii_print(netdissect_options *ndo, const u_char *bp, u_int len)
 	uint32_t hdr, hdr2, ver, cos, sid, ft;
 
 	ndo->ndo_protocol = "erspan";
+	ND_LCHECK_SANITY(len, bp);
 	nd_print_protocol(ndo);
 
 	/*

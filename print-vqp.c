@@ -108,6 +108,7 @@ vqp_print(netdissect_options *ndo, const u_char *pptr, u_int len)
     uint8_t nitems;
 
     ndo->ndo_protocol = "vqp";
+    ND_LCHECK_SANITY(len, pptr);
     tptr=pptr;
     tlen = len;
     vqp_common_header = (const struct vqp_common_header_t *)pptr;

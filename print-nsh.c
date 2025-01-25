@@ -96,6 +96,7 @@ nsh_print(netdissect_options *ndo, const u_char *bp, u_int len)
     u_int next_len;
 
     ndo->ndo_protocol = "nsh";
+    ND_LCHECK_SANITY(len, bp);
     /*
      *    0                   1                   2                   3
      *    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1

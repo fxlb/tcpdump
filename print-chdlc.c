@@ -58,6 +58,7 @@ chdlc_print(netdissect_options *ndo, const u_char *p, u_int length)
 	u_int proto;
 
 	ndo->ndo_protocol = "chdlc";
+	ND_LCHECK_SANITY(length, p);
 	ND_ICHECK_U(length, <, CHDLC_HDRLEN);
 	proto = GET_BE_U_2(p + 2);
 	if (ndo->ndo_eflag) {
@@ -138,6 +139,7 @@ chdlc_slarp_print(netdissect_options *ndo, const u_char *cp, u_int length)
         u_int sec,min,hrs,days;
 
 	ndo->ndo_protocol = "chdlc_slarp";
+	ND_LCHECK_SANITY(length, cp);
 	ND_PRINT("SLARP");
 	ND_ICHECK_U(length, <, SLARP_MIN_LEN);
 	ND_PRINT(" (length: %u), ",length);

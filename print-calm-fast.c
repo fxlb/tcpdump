@@ -40,6 +40,7 @@ void
 calm_fast_print(netdissect_options *ndo, const u_char *bp, u_int length, const struct lladdr_info *src)
 {
 	ndo->ndo_protocol = "calm_fast";
+	ND_LCHECK_SANITY(length, bp);
 
 	ND_PRINT("CALM FAST");
 	if (src != NULL)

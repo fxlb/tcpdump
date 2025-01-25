@@ -105,6 +105,7 @@ udld_print(netdissect_options *ndo,
     uint8_t ver, code, flags;
 
     ndo->ndo_protocol = "udld";
+    ND_LCHECK_SANITY(length, tptr);
     if (length < UDLD_HEADER_LEN)
         goto invalid;
 

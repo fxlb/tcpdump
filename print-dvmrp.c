@@ -80,6 +80,7 @@ dvmrp_print(netdissect_options *ndo,
 	uint8_t major_version, minor_version;
 
 	ndo->ndo_protocol = "dvmrp";
+	ND_LCHECK_SANITY(len, bp);
 	if (len < 8) {
 		ND_PRINT(" [length %u < 8]", len);
 		goto invalid;

@@ -847,6 +847,7 @@ bgp_vpn_rd_print(netdissect_options *ndo, const u_char *pptr)
     /* allocate space for the largest possible string */
     char astostr[AS_STR_SIZE];
 
+    ND_LCHECK_SANITY(0, pptr);
     /* ok lets load the RD format */
     switch (GET_BE_U_2(pptr)) {
 
@@ -3288,6 +3289,7 @@ bgp_print(netdissect_options *ndo,
     uint16_t hlen;
 
     ndo->ndo_protocol = "bgp";
+    ND_LCHECK_SANITY(length, dat);
     ND_PRINT(": BGP");
 
     if (ndo->ndo_vflag < 1) /* lets be less chatty */

@@ -959,6 +959,7 @@ ospf6_print(netdissect_options *ndo,
 	uint16_t datalen;
 
 	ndo->ndo_protocol = "ospf3";
+	ND_LCHECK_SANITY(length, bp);
 	op = (const struct ospf6hdr *)bp;
 
 	/* If the type is valid translate it, or just print the type */

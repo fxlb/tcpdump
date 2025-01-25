@@ -167,6 +167,7 @@ geneve_opts_print(netdissect_options *ndo, const u_char *bp, u_int len)
         uint8_t opt_type;
         uint8_t opt_len;
 
+	/* ND_PRINT("[%p %u]\n", bp, ndo->ndo_snapend - bp); */
         ND_ICHECKMSG_U("remaining options length", len, <, 4);
         ND_PRINT("%s", sep);
         sep = ", ";
@@ -218,6 +219,8 @@ geneve_print(netdissect_options *ndo, const u_char *bp, u_int len)
     u_int opts_len;
 
     ndo->ndo_protocol = "geneve";
+    ND_LCHECK_SANITY(len, bp);
+
     ND_PRINT("Geneve");
 
     ND_ICHECK_U(len, <, 8);
@@ -280,7 +283,9 @@ geneve_print(netdissect_options *ndo, const u_char *bp, u_int len)
         ND_PRINT("]");
     }
 
+    /* ND_PRINT("[%p %p %u] ", bp, ndo->ndo_snapend, ndo->ndo_snapend - bp); */
     bp += opts_len;
+    /* ND_PRINT("[%p %p %u] ", bp, ndo->ndo_snapend, ndo->ndo_snapend - bp); */
     len -= opts_len;
 
     if (ndo->ndo_vflag < 1)
@@ -288,6 +293,7 @@ geneve_print(netdissect_options *ndo, const u_char *bp, u_int len)
     else
         ND_PRINT("\n\t");
 
+/* ND_PRINT("[[%u]]", ND_BYTES_AVAILABLE_AFTER(bp)); */
     if (ethertype_print(ndo, prot, bp, len, ND_BYTES_AVAILABLE_AFTER(bp), NULL, NULL) == 0) {
         if (prot == ETHERTYPE_TEB)
             ether_print(ndo, bp, len, ND_BYTES_AVAILABLE_AFTER(bp), NULL, NULL);

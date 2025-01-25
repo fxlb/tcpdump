@@ -79,6 +79,7 @@ lane_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen)
 	const struct lane_controlhdr *lec;
 
 	ndo->ndo_protocol = "lane";
+	ND_LCHECK_SANITY(length, p);
 
 	lec = (const struct lane_controlhdr *)p;
 	if (GET_BE_U_2(lec->lec_header) == 0xff00) {

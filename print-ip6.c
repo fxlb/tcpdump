@@ -237,6 +237,7 @@ ip6_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	int found_hbh;
 
 	ndo->ndo_protocol = "ip6";
+	ND_LCHECK_SANITY(length, bp);
 	ip6 = (const struct ip6_hdr *)bp;
 
 	if (!ndo->ndo_eflag) {
@@ -320,8 +321,12 @@ ip6_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	while (cp < ndo->ndo_snapend && advance > 0) {
 		if (len < (u_int)advance)
 			goto trunc;
+		/* ND_PRINT("[[%u]]", ND_BYTES_AVAILABLE_AFTER(cp)); */
+		/* ND_PRINT("[[a=%d]]", advance); */
 		cp += advance;
+		/* ND_PRINT("[[%u]]", ND_BYTES_AVAILABLE_AFTER(cp)); */
 		len -= advance;
+		/* ND_PRINT("[[len=%u]]", len); */
 		total_advance += advance;
 
 		if (cp == (const u_char *)(ip6 + 1) &&
@@ -485,6 +490,10 @@ ip6_print(netdissect_options *ndo, const u_char *bp, u_int length)
 					len -= total_advance;
 				}
 			}
+			/* ND_PRINT("[[%u]]", ND_BYTES_AVAILABLE_AFTER(cp)); */
+			/* ND_PRINT("[[%u]]", ND_BYTES_AVAILABLE_AFTER(bp)); */
+			/* ND_PRINT("[[%p %p]]", cp, ndo->ndo_snapend); */
+			ND_LCHECK_SANITY(length, cp);
 			ip_demux_print(ndo, cp, len, 6, fragmented,
 				       GET_U_1(ip6->ip6_hlim), nh, bp);
 			nd_pop_packet_info(ndo);

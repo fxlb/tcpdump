@@ -248,6 +248,7 @@ slow_print(netdissect_options *ndo,
     u_int subtype;
 
     ndo->ndo_protocol = "slow";
+    ND_LCHECK_SANITY(len, pptr);
     if (len < 1)
         goto tooshort;
     subtype = GET_U_1(pptr);

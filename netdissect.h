@@ -214,6 +214,7 @@ struct netdissect_saved_packet_info {
 
 /* 'val' value(s) for longjmp */
 #define ND_TRUNCATED 1
+#define ND_INVALID   2
 
 struct netdissect_options {
   int ndo_bflag;		/* print 4 byte ASes in ASDOT notation */
@@ -520,6 +521,20 @@ extern int unaligned_memcmp(const void *, const void *, size_t);
 #define UNALIGNED_MEMCMP(p, q, l)	unaligned_memcmp((p), (q), (l))
 #endif
 
+/*
+ * Check if remaining len >= remaining caplen.
+ * If not longjmp() with val = ND_INVALID.
+ */
+#include <stdlib.h>
+#define ND_LCHECK_SANITY(length, p) \
+if (p > ndo->ndo_snapend) { ND_PRINT(" [BAD: %d %s:%d(%s)] ", (int)(ndo->ndo_snapend - p), __FILE__, __LINE__, __func__); \
+fflush(stdout); \
+abort(); }
+/*if (length < ND_BYTES_AVAILABLE_AFTER(p)) { \
+ND_PRINT(" [Invalid packet: remaining length(%u) < remaining caplen(%u)]", length, ND_BYTES_AVAILABLE_AFTER(p)); \
+ND_PRINT(" [%s:%d(%s)] ", __FILE__, __LINE__, __func__); \*/
+/*longjmp(ndo->ndo_early_end, ND_INVALID); \*/
+/*}*/
 #define PLURAL_SUFFIX(n) \
 	(((n) != 1) ? "s" : "")
 

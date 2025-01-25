@@ -1849,6 +1849,7 @@ snmp_print(netdissect_options *ndo,
 	int version = 0;
 
 	ndo->ndo_protocol = "snmp";
+	ND_LCHECK_SANITY(length, np);
 	ND_PRINT(" ");
 
 	/* initial Sequence */

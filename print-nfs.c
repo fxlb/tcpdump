@@ -336,6 +336,7 @@ nfsreply_print(netdissect_options *ndo,
 	char srcid[20], dstid[20];	/*fits 32bit*/
 
 	ndo->ndo_protocol = "nfs";
+	ND_LCHECK_SANITY(length, bp);
 	rp = (const struct sunrpc_msg *)bp;
 
 	if (!ndo->ndo_nflag) {
@@ -365,6 +366,7 @@ nfsreply_noaddr_print(netdissect_options *ndo,
 	enum sunrpc_auth_stat rwhy;
 
 	ndo->ndo_protocol = "nfs";
+	ND_LCHECK_SANITY(length, bp);
 	rp = (const struct sunrpc_msg *)bp;
 
 	ND_TCHECK_4(rp->rm_reply.rp_stat);
@@ -570,6 +572,7 @@ nfsreq_noaddr_print(netdissect_options *ndo,
 	struct nfsv3_sattr sa3;
 
 	ndo->ndo_protocol = "nfs";
+	ND_LCHECK_SANITY(length, bp);
 	ND_PRINT("%u", length);
 	rp = (const struct sunrpc_msg *)bp;
 

@@ -190,6 +190,7 @@ fqdn_print(netdissect_options *ndo,
 	u_int offset, max_offset;
 	u_int name_chars = 0;
 
+	ND_LCHECK_SANITY(0, bp);
 	if ((l = labellen(ndo, cp)) == (u_int)-1)
 		return(NULL);
 	if (!ND_TTEST_1(cp))
@@ -912,6 +913,7 @@ domain_print(netdissect_options *ndo,
 	uint16_t b2;
 
 	ndo->ndo_protocol = "domain";
+	ND_LCHECK_SANITY(length, bp);
 
 	if (over_tcp) {
 		/*

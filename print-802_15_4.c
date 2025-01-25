@@ -2463,6 +2463,7 @@ ieee802_15_4_print(netdissect_options *ndo,
 	uint16_t fc;
 
 	ndo->ndo_protocol = "802.15.4";
+	ND_LCHECK_SANITY(length, p);
 
 	if (caplen < 2) {
 		nd_print_trunc(ndo);

@@ -1637,6 +1637,7 @@ forces_print(netdissect_options *ndo,
 	int rc = 0;
 
 	ndo->ndo_protocol = "forces";
+	ND_LCHECK_SANITY(len, pptr);
 	fhdr = (const struct forcesh *)pptr;
 	ND_TCHECK_SIZE(fhdr);
 	tom = GET_U_1(fhdr->fm_tom);

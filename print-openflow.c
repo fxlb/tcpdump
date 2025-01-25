@@ -142,6 +142,7 @@ void
 openflow_print(netdissect_options *ndo, const u_char *cp, u_int len)
 {
 	ndo->ndo_protocol = "openflow";
+	ND_LCHECK_SANITY(len, cp);
 	ND_PRINT(": OpenFlow");
 	while (len) {
 		/* Print a single OpenFlow message. */

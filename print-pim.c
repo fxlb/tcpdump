@@ -264,6 +264,7 @@ pimv1_print(netdissect_options *ndo,
 	u_char type;
 
 	ndo->ndo_protocol = "pimv1";
+	ND_LCHECK_SANITY(len, bp);
 	type = GET_U_1(bp + 1);
 
 	ND_PRINT(" %s", tok2str(pimv1_type_str, "[type %u]", type));
@@ -353,6 +354,7 @@ cisco_autorp_print(netdissect_options *ndo,
 	u_int hold;
 
 	ndo->ndo_protocol = "cisco_autorp";
+	ND_LCHECK_SANITY(len, bp);
 	if (len < 8)
 		goto trunc;
 	ND_PRINT(" auto-rp ");
@@ -457,6 +459,7 @@ pim_print(netdissect_options *ndo,
 	uint8_t pim_typever;
 
 	ndo->ndo_protocol = "pim";
+	ND_LCHECK_SANITY(len, bp);
 
 	pim_typever = GET_U_1(pim->pim_typever);
 	switch (PIM_VER(pim_typever)) {
@@ -690,6 +693,7 @@ pimv2_print(netdissect_options *ndo,
 	u_int pimv2_addr_len;
 
 	ndo->ndo_protocol = "pimv2";
+	ND_LCHECK_SANITY(len, bp);
 	if (len < 2) {
 		ND_PRINT("[length %u < 2]", len);
 		nd_print_invalid(ndo);

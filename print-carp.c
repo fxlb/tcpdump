@@ -50,6 +50,7 @@ carp_print(netdissect_options *ndo, const u_char *bp, u_int len, u_int ttl)
 	const char *type_s;
 
 	ndo->ndo_protocol = "carp";
+	ND_LCHECK_SANITY(len, bp);
 	nd_print_protocol_caps(ndo);
 	version = (GET_U_1(bp) & 0xf0) >> 4;
 	type = GET_U_1(bp) & 0x0f;

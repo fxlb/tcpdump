@@ -189,6 +189,7 @@ pgm_print(netdissect_options *ndo,
 	uint32_t seq, opts_len, len, offset;
 
 	ndo->ndo_protocol = "pgm";
+	ND_LCHECK_SANITY(length, bp);
 	pgm = (const struct pgm_header *)bp;
 	ip = (const struct ip *)bp2;
 	if (IP_V(ip) == 6)

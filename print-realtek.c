@@ -109,6 +109,7 @@ rrcp_print(netdissect_options *ndo,
 	uint8_t rrcp_opcode;
 
 	ndo->ndo_protocol = "rrcp";
+	// ND_LCHECK_SANITY(length, cp);
 	rrcp_opcode = GET_U_1((cp + RRCP_OPCODE_ISREPLY_OFFSET)) & RRCP_OPCODE_MASK;
 	ND_PRINT("RRCP %s: %s",
 		((GET_U_1(cp + RRCP_OPCODE_ISREPLY_OFFSET)) & RRCP_ISREPLY) ? "reply" : "query",
@@ -212,6 +213,7 @@ rtl_print(netdissect_options *ndo,
 	uint8_t rtl_proto;
 
 	ndo->ndo_protocol = "rtl";
+	ND_LCHECK_SANITY(length, cp);
 
 	if (src != NULL && dst != NULL) {
 		ND_PRINT("%s > %s, ",

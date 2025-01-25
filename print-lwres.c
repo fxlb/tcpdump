@@ -281,6 +281,7 @@ lwres_print(netdissect_options *ndo,
 	int unsupported = 0;
 
 	ndo->ndo_protocol = "lwres";
+	ND_LCHECK_SANITY(length, bp);
 	np = (const struct lwres_lwpacket *)bp;
 	ND_TCHECK_2(np->authlength);
 

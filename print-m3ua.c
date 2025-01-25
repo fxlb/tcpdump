@@ -305,6 +305,7 @@ m3ua_print(netdissect_options *ndo,
   uint8_t msg_class;
 
   ndo->ndo_protocol = "m3ua";
+  ND_LCHECK_SANITY(size, buf);
   /* size includes the header */
   if (size < sizeof(struct m3ua_common_header))
     goto invalid;

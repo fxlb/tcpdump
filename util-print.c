@@ -508,10 +508,13 @@ int
 print_unknown_data(netdissect_options *ndo, const u_char *cp,
                    const char *indent, u_int len)
 {
+	ND_LCHECK_SANITY(len, cp);
 	if (!ND_TTEST_LEN(cp, 0)) {
 		ND_PRINT("%sDissector error: %s() called with pointer past end of packet",
 		    indent, __func__);
-		return(0);
+		fflush(stdout);
+		abort();
+		/* return(0); */
 	}
 	hex_print(ndo, indent, cp, ND_MIN(len, ND_BYTES_AVAILABLE_AFTER(cp)));
 	return(1); /* everything is ok */

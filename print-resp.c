@@ -213,6 +213,7 @@ resp_print(netdissect_options *ndo, const u_char *bp, u_int length)
     int ret_len = 0;
 
     ndo->ndo_protocol = "resp";
+    ND_LCHECK_SANITY(length, bp);
 
     ND_PRINT(": RESP");
     while (length != 0) {

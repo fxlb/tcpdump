@@ -130,6 +130,8 @@ rt6_print(netdissect_options *ndo, const u_char *bp, const u_char *bp2 _U_)
 	const u_char *p;
 
 	ndo->ndo_protocol = "rt6";
+	ND_LCHECK_SANITY(length, bp);
+	/* ND_PRINT("[[r=%ld]]", ndo->ndo_snapend - bp); */
 
 	nd_print_protocol_caps(ndo);
 	dp = (const struct ip6_rthdr *)bp;

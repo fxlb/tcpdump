@@ -2217,6 +2217,7 @@ ieee802_11_print(netdissect_options *ndo,
 	int llc_hdrlen;
 
 	ndo->ndo_protocol = "802.11";
+	ND_LCHECK_SANITY(length, p);
 	caplen = orig_caplen;
 	/* Remove FCS, if present */
 	if (length < fcslen) {
@@ -3287,6 +3288,7 @@ ieee802_11_radio_print(netdissect_options *ndo,
 	u_int fcslen;
 
 	ndo->ndo_protocol = "802.11_radio";
+	ND_LCHECK_SANITY(length, p);
 	if (caplen < sizeof(*hdr)) {
 		nd_print_trunc(ndo);
 		return caplen;
@@ -3474,6 +3476,7 @@ ieee802_11_radio_avs_print(netdissect_options *ndo,
 	uint32_t caphdr_len;
 
 	ndo->ndo_protocol = "802.11_radio_avs";
+	ND_LCHECK_SANITY(length, p);
 	if (caplen < 8) {
 		nd_print_trunc(ndo);
 		return caplen;
