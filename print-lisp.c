@@ -245,6 +245,7 @@ lisp_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	const lisp_map_register_loc *lisp_loc;
 
 	ndo->ndo_protocol = "lisp";
+	ND_LCHECK_SANITY(length, bp);
 	nd_print_protocol_caps(ndo);
 	ND_ICHECK_ZU(length, <, MAP_REGISTER_HDR_LEN);
 	lisp_hdr = (const lisp_map_register_hdr *) bp;

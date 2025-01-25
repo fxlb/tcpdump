@@ -912,6 +912,7 @@ nbt_tcp_print(netdissect_options *ndo,
     const u_char *maxbuf;
 
     ndo->ndo_protocol = "nbt_tcp";
+    ND_LCHECK_SANITY(length, data);
     if (length < 4)
 	goto trunc;
     if (ndo->ndo_snapend < data)
@@ -1086,6 +1087,7 @@ nbt_udp137_print(netdissect_options *ndo,
     u_int total, i;
 
     ndo->ndo_protocol = "nbt_udp137";
+    ND_LCHECK_SANITY(length, data);
     name_trn_id = GET_BE_U_2(data);
     response = (GET_U_1(data + 2) >> 7);
     opcode = (GET_U_1(data + 2) >> 3) & 0xF;
@@ -1224,6 +1226,7 @@ smb_tcp_print(netdissect_options *ndo,
     const u_char *maxbuf;
 
     ndo->ndo_protocol = "smb_tcp";
+    ND_LCHECK_SANITY(length, data);
     if (length < 4)
 	goto trunc;
     if (ndo->ndo_snapend < data)
@@ -1266,6 +1269,7 @@ nbt_udp138_print(netdissect_options *ndo,
     const u_char *maxbuf = data + length;
 
     ndo->ndo_protocol = "nbt_udp138";
+    ND_LCHECK_SANITY(length, data);
     if (maxbuf > ndo->ndo_snapend)
 	maxbuf = ndo->ndo_snapend;
     if (maxbuf <= data)
@@ -1363,6 +1367,7 @@ netbeui_print(netdissect_options *ndo,
     int is_truncated = 0;
 
     ndo->ndo_protocol = "netbeui";
+    ND_LCHECK_SANITY(length, data);
     if (maxbuf > ndo->ndo_snapend)
 	maxbuf = ndo->ndo_snapend;
     len = GET_LE_U_2(data);
@@ -1459,6 +1464,7 @@ ipx_netbios_print(netdissect_options *ndo,
     const u_char *maxbuf;
 
     ndo->ndo_protocol = "ipx_netbios";
+    ND_LCHECK_SANITY(length, data);
     maxbuf = data + length;
     /* Don't go past the end of the captured data in the packet. */
     if (maxbuf > ndo->ndo_snapend)

@@ -271,6 +271,7 @@ dccp_print(netdissect_options *ndo, const u_char *bp, const u_char *data2,
 	uint8_t	dccph_type;
 
 	ndo->ndo_protocol = "dccp";
+	ND_LCHECK_SANITY(len, bp);
 	dh = (const struct dccp_hdr *)bp;
 
 	ip = (const struct ip *)data2;

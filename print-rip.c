@@ -298,6 +298,7 @@ rip_print(netdissect_options *ndo,
 	unsigned entry_size;
 
 	ndo->ndo_protocol = "rip";
+	ND_LCHECK_SANITY(len, p);
 	ND_PRINT("%s", (ndo->ndo_vflag >= 1) ? "\n\t" : "");
 	nd_print_protocol_caps(ndo);
 	ND_ICHECKMSG_ZU("packet length", len, <, sizeof(*rp));

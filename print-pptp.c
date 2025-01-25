@@ -776,6 +776,7 @@ pptp_print(netdissect_options *ndo,
 	uint16_t ctrl_msg_type;
 
 	ndo->ndo_protocol = "pptp";
+	ND_LCHECK_SANITY(length, dat);
 	ND_PRINT(": ");
 	nd_print_protocol(ndo);
 

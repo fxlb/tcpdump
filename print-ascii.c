@@ -65,6 +65,7 @@ ascii_print(netdissect_options *ndo,
 	int truncated = FALSE;
 
 	ndo->ndo_protocol = "ascii";
+	ND_LCHECK_SANITY(length, cp);
 	caplength = ND_BYTES_AVAILABLE_AFTER(cp);
 	if (length > caplength) {
 		length = caplength;
@@ -111,6 +112,7 @@ hex_and_ascii_print_with_offset(netdissect_options *ndo, const char *indent,
 	char hexstuff[HEXDUMP_SHORTS_PER_LINE*HEXDUMP_HEXSTUFF_PER_SHORT+1], *hsp;
 	char asciistuff[ASCII_LINELENGTH+1], *asp;
 
+	ND_LCHECK_SANITY(length, cp);
 	caplength = ND_BYTES_AVAILABLE_AFTER(cp);
 	if (length > caplength) {
 		length = caplength;
@@ -179,6 +181,7 @@ hex_print_with_offset(netdissect_options *ndo,
 	u_int nshorts;
 	int truncated = FALSE;
 
+	ND_LCHECK_SANITY(length, cp);
 	caplength = ND_BYTES_AVAILABLE_AFTER(cp);
 	if (length > caplength) {
 		length = caplength;
@@ -210,5 +213,6 @@ void
 hex_print(netdissect_options *ndo,
 	  const char *indent, const u_char *cp, u_int length)
 {
+	ND_LCHECK_SANITY(length, cp);
 	hex_print_with_offset(ndo, indent, cp, length, 0);
 }

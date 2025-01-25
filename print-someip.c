@@ -92,6 +92,7 @@ someip_print(netdissect_options *ndo, const u_char *bp, const u_int length)
     uint8_t return_code;
 
     ndo->ndo_protocol = "someip";
+    ND_LCHECK_SANITY(len, bp);
     nd_print_protocol_caps(ndo);
 
     ND_ICHECK_U(length, <, SOMEIP_HDR_LEN);

@@ -1359,6 +1359,7 @@ radius_print(netdissect_options *ndo,
    u_int len, auth_idx;
 
    ndo->ndo_protocol = "radius";
+   ND_LCHECK_SANITY(length, dat);
    nd_print_protocol_caps(ndo);
    ND_ICHECK_U(length, <, MIN_RADIUS_LEN);
    rad = (const struct radius_hdr *)dat;

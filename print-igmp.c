@@ -229,6 +229,7 @@ igmp_print(netdissect_options *ndo,
     struct cksum_vec vec[1];
 
     ndo->ndo_protocol = "igmp";
+    ND_LCHECK_SANITY(len, bp);
     if (ndo->ndo_qflag) {
         ND_PRINT("igmp");
         return;

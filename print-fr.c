@@ -149,6 +149,7 @@ q922_string(netdissect_options *ndo, const u_char *p, u_int length)
     int ret;
     memset(buffer, 0, sizeof(buffer));
 
+    ND_LCHECK_SANITY(length, p);
     ret = parse_q922_header(ndo, p, &dlci, &addr_len, &flags, length);
     if (ret == 1) {
         snprintf(buffer, sizeof(buffer), "DLCI %u", dlci);
@@ -249,6 +250,7 @@ fr_print(netdissect_options *ndo,
 	uint32_t flags;
 
 	ndo->ndo_protocol = "fr";
+	ND_LCHECK_SANITY(length, p);
 	ret = parse_q922_header(ndo, p, &dlci, &addr_len, &flags, length);
 	if (ret == -1)
 		goto trunc;
@@ -461,6 +463,7 @@ mfr_print(netdissect_options *ndo,
  */
 
     ndo->ndo_protocol = "mfr";
+    ND_LCHECK_SANITY(length, p);
 
     if (length < 4) {	/* minimum frame header length */
         ND_PRINT("[length %u < 4]", length);
@@ -819,6 +822,7 @@ q933_print(netdissect_options *ndo,
 	u_int unshift_codeset;
 
 	ndo->ndo_protocol = "q.933";
+	ND_LCHECK_SANITY(length, p);
 	ND_PRINT("%s", ndo->ndo_eflag ? "" : "Q.933");
 
 	if (length == 0 || !ND_TTEST_1(p)) {

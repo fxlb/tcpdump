@@ -387,6 +387,7 @@ wb_print(netdissect_options *ndo,
 	int print_result;
 
 	ndo->ndo_protocol = "wb";
+	ND_LCHECK_SANITY(len, hdr);
 	ph = (const struct pkt_hdr *)hdr;
 	if (len < sizeof(*ph))
 		goto invalid;

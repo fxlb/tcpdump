@@ -83,6 +83,7 @@ syslog_print(netdissect_options *ndo,
     uint16_t facility,severity;
 
     ndo->ndo_protocol = "syslog";
+    ND_LCHECK_SANITY(len, pptr);
     /* extract decimal figures that are
      * encapsulated within < > tags
      * based on this decimal figure extract the

@@ -237,6 +237,7 @@ ospf_grace_lsa_print(netdissect_options *ndo,
 {
     u_int tlv_type, tlv_length;
 
+    ND_LCHECK_SANITY(length, tptr);
     while (ls_length != 0) {
         ND_ICHECKMSG_U("remaining LS length", ls_length, <, 4);
         tlv_type = GET_BE_U_2(tptr);
@@ -485,6 +486,7 @@ ospf_te_lsa_print(netdissect_options *ndo,
 {
     u_int tlv_type, tlv_length;
 
+    ND_LCHECK_SANITY(length, tptr);
     while (ls_length != 0) {
         ND_ICHECKMSG_U("remaining LS length", ls_length, <, 4);
         tlv_type = GET_BE_U_2(tptr);
@@ -1416,6 +1418,7 @@ ospf_print(netdissect_options *ndo,
 	uint16_t ospf_len, authtype;
 
 	ndo->ndo_protocol = "ospf2";
+	ND_LCHECK_SANITY(length, bp);
 	ND_PRINT("OSPF");
 
 	op = (const struct ospfhdr *)bp;

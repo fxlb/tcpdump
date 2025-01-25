@@ -318,6 +318,7 @@ olsr_print(netdissect_options *ndo,
     const u_char *tptr, *msg_data;
 
     ndo->ndo_protocol = "olsr";
+    ND_LCHECK_SANITY(length, pptr);
     tptr = pptr;
 
     nd_print_protocol_caps(ndo);

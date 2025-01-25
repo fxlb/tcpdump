@@ -121,6 +121,7 @@ macsec_print(netdissect_options *ndo, const u_char **bp,
 
 	save_protocol = ndo->ndo_protocol;
 	ndo->ndo_protocol = "macsec";
+	ND_LCHECK_SANITY(length, p);
 
 	/* we need the full MACsec header in the capture */
 	if (caplen < MACSEC_SECTAG_LEN_NOSCI) {

@@ -535,6 +535,7 @@ mptcp_print(netdissect_options *ndo,
         u_int subtype;
 
         ndo->ndo_protocol = "mptcp";
+	ND_LCHECK_SANITY(len, cp);
         if (len < 3)
                 return 0;
 

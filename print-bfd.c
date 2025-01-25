@@ -291,6 +291,7 @@ bfd_print(netdissect_options *ndo, const u_char *pptr,
           u_int len, u_int port)
 {
 	ndo->ndo_protocol = "bfd";
+	ND_LCHECK_SANITY(len, pptr);
         if (port == BFD_CONTROL_PORT ||
             port == BFD_MULTIHOP_PORT ||
             port == BFD_LAG_PORT ||

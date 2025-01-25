@@ -230,6 +230,7 @@ eigrp_print(netdissect_options *ndo, const u_char *pptr, u_int len)
     } tlv_ptr;
 
     ndo->ndo_protocol = "eigrp";
+    ND_LCHECK_SANITY(len, pptr);
     tptr=pptr;
     tlen = len;
     eigrp_com_header = (const struct eigrp_common_header *)pptr;

@@ -464,6 +464,7 @@ sctp_print(netdissect_options *ndo,
   int isforces = 0;
 
   ndo->ndo_protocol = "sctp";
+  ND_LCHECK_SANITY(sctpPacketLength, bp);
   ND_ICHECKMSG_ZU("length", sctpPacketLength, <, sizeof(struct sctpHeader));
   sctpPktHdr = (const struct sctpHeader*) bp;
   ND_TCHECK_SIZE(sctpPktHdr);

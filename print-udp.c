@@ -97,6 +97,7 @@ vat_print(netdissect_options *ndo, const u_char *hdr, u_int length)
 	u_int ts;
 
 	ndo->ndo_protocol = "vat";
+	ND_LCHECK_SANITY(length, hdr);
 	if (length < 2) {
 		ND_PRINT("udp/va/vat, length %u < 2", length);
 		return;
@@ -139,6 +140,7 @@ rtp_print(netdissect_options *ndo, const u_char *hdr, u_int len)
 	const char * ptype;
 
 	ndo->ndo_protocol = "rtp";
+	ND_LCHECK_SANITY(length, hdr);
 	if (len < 8) {
 		ND_PRINT("udp/rtp, length %u < 8", len);
 		return;
@@ -223,6 +225,7 @@ rtcp_print(netdissect_options *ndo, const u_char *hdr)
 	double ts, dts;
 
 	ndo->ndo_protocol = "rtcp";
+	// ND_LCHECK_SANITY(length, cp);
 	len = (GET_BE_U_2(rh->rh_len) + 1) * 4;
 	flags = GET_BE_U_2(rh->rh_flags);
 	cnt = (flags >> 8) & 0x1f;
@@ -351,6 +354,8 @@ udp_print(netdissect_options *ndo, const u_char *bp, u_int length,
 	const struct ip6_hdr *ip6;
 
 	ndo->ndo_protocol = "udp";
+	ND_LCHECK_SANITY(length, bp);
+	/* length = 201311138; */
 	up = (const struct udphdr *)bp;
 	ip = (const struct ip *)bp2;
 	if (IP_V(ip) == 6)

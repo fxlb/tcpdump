@@ -91,6 +91,7 @@ tftp_print(netdissect_options *ndo,
 	u_int ui;
 
 	ndo->ndo_protocol = "tftp";
+	ND_LCHECK_SANITY(length, bp);
 
 	/* Print protocol */
 	nd_print_protocol_caps(ndo);

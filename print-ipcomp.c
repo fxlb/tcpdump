@@ -41,6 +41,7 @@ ipcomp_print(netdissect_options *ndo, const u_char *bp)
 	uint16_t cpi;
 
 	ndo->ndo_protocol = "ipcomp";
+	ND_LCHECK_SANITY(length, bp);
 	ipcomp = (const struct ipcomp *)bp;
 	cpi = GET_BE_U_2(ipcomp->comp_cpi);
 

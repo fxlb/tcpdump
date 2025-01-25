@@ -100,6 +100,7 @@ pppoe_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	const u_char *pppoe_packet, *pppoe_payload;
 
 	ndo->ndo_protocol = "pppoe";
+	ND_LCHECK_SANITY(length, bp);
 	if (length < PPPOE_HDRLEN) {
 		ND_PRINT(" (length %u < %u)", length, PPPOE_HDRLEN);
 		goto invalid;

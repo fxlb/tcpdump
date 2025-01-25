@@ -104,6 +104,7 @@ gre_print(netdissect_options *ndo, const u_char *bp, u_int length)
 	u_int vers;
 
 	ndo->ndo_protocol = "gre";
+	ND_LCHECK_SANITY(length, bp);
 	nd_print_protocol_caps(ndo);
 	ND_ICHECK_U(length, <, 2);
 	vers = GET_BE_U_2(bp) & GRE_VERS_MASK;

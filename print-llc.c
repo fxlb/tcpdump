@@ -154,6 +154,7 @@ llc_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen,
 	int is_u;
 
 	ndo->ndo_protocol = "llc";
+	ND_LCHECK_SANITY(length, p);
 	if (caplen < 3) {
 		nd_print_trunc(ndo);
 		ND_DEFAULTPRINT((const u_char *)p, caplen);
@@ -427,6 +428,7 @@ snap_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen,
 	int ret;
 
 	ndo->ndo_protocol = "snap";
+	ND_LCHECK_SANITY(length, p);
 	ND_TCHECK_5(p);
 	if (caplen < 5 || length < 5)
 		goto trunc;

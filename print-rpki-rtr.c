@@ -371,6 +371,7 @@ void
 rpki_rtr_print(netdissect_options *ndo, const u_char *pptr, u_int len)
 {
     ndo->ndo_protocol = "rpki_rtr";
+    ND_LCHECK_SANITY(len, pptr);
     if (!ndo->ndo_vflag) {
 	ND_PRINT(", RPKI-RTR");
 	return;

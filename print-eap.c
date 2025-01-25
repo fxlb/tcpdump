@@ -155,6 +155,7 @@ eap_print(netdissect_options *ndo,
     const char *sep;
 
     ndo->ndo_protocol = "eap";
+    ND_LCHECK_SANITY(length, cp);
     type = GET_U_1(cp);
     len = GET_BE_U_2(cp + 2);
     ND_ICHECK_U(len, <, 4);
@@ -281,6 +282,7 @@ eapol_print(netdissect_options *ndo,
     u_int eap_type, eap_len;
 
     ndo->ndo_protocol = "eap";
+    ND_LCHECK_SANITY(length, cp);
     eap = (const struct eap_frame_t *)cp;
     eap_type = GET_U_1(eap->type);
 

@@ -94,6 +94,7 @@ ipfc_print(netdissect_options *ndo, const u_char *p, u_int length, u_int caplen)
 	int llc_hdrlen;
 
 	ndo->ndo_protocol = "ipfc";
+	ND_LCHECK_SANITY(length, p);
 	ND_TCHECK_LEN(p, IPFC_HDRLEN);
 	/*
 	 * Get the network addresses into a canonical form

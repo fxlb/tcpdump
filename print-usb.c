@@ -185,6 +185,7 @@ usb_header_print(netdissect_options *ndo, const pcap_usb_header *uh)
 	uint8_t transfer_type, event_type;
 
 	ndo->ndo_protocol = "usb";
+	// ND_LCHECK_SANITY(length, cp);
 
 	nd_print_protocol_caps(ndo);
 	if (ndo->ndo_qflag)

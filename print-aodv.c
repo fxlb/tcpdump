@@ -348,6 +348,7 @@ aodv_print(netdissect_options *ndo,
 	uint8_t msg_type;
 
 	ndo->ndo_protocol = "aodv";
+	ND_LCHECK_SANITY(length, dat);
 	ND_PRINT(" aodv");
 
 	/*

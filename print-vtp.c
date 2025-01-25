@@ -125,6 +125,7 @@ vtp_print(netdissect_options *ndo,
 
     ndo->ndo_protocol = "vtp";
     nd_print_protocol_caps(ndo);
+    ND_LCHECK_SANITY(length, pptr);
     ND_ICHECK_U(length, <, VTP_HEADER_LEN);
 
     tptr = pptr;
