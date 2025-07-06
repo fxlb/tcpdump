@@ -235,6 +235,7 @@ ospf_grace_lsa_print(netdissect_options *ndo,
 {
     u_int tlv_type, tlv_length;
 
+    ND_LCHECK_SANITY(length, tptr);
     while (ls_length != 0) {
         ND_TCHECK_4(tptr);
         if (ls_length < 4) {
@@ -517,6 +518,7 @@ ospf_te_lsa_print(netdissect_options *ndo,
 {
     u_int tlv_type, tlv_length;
 
+    ND_LCHECK_SANITY(length, tptr);
     while (ls_length != 0) {
         ND_TCHECK_4(tptr);
         if (ls_length < 4) {
