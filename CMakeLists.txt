@@ -1210,7 +1210,7 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/.devel OR EXISTS ${CMAKE_BINARY_DIR}/.devel)
             # means the same as "-pedantic".  The latter is mutually exclusive
             # with several other options.  One of those is "-xc99", which has
             # already been set for Sun C above.
-            check_and_add_compiler_option(-Wpedantic)
+            #check_and_add_compiler_option(-Wpedantic)
         endif()
         check_and_add_compiler_option(-Wpointer-arith)
         check_and_add_compiler_option(-Wpointer-sign)
