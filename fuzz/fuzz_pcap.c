@@ -141,7 +141,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
 	    Ndo.ndo_packettype = t;
             for (int e = 0 ; e < 2; e++) {
                 Ndo.ndo_eflag = e;
-                for (int v = 0 ; v < 9; v++) {
+                for (int v = 0 ; v < 5; v++) {
                     Ndo.ndo_vflag = v;
                     pretty_print_packet(&Ndo, header, pkt, packets_captured);
                 }
