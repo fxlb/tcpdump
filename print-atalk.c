@@ -603,7 +603,7 @@ ataddr_string(netdissect_options *ndo,
 	/*
 	 * Are we doing address to name resolution?
 	 */
-	if (!ndo->ndo_nflag) {
+	if (ndo->ndo_nflag) {
 		/*
 		 * Yes.  Have we tried to open and read an AppleTalk
 		 * number to name map file?
@@ -613,7 +613,7 @@ ataddr_string(netdissect_options *ndo,
 			 * No; try to do so.
 			 */
 			first = 0;
-			fp = fopen("/etc/atalk.names", "r");
+			fp = fopen("/tmp/atalk.names", "r");
 			if (fp != NULL) {
 				char line[256];
 				u_int i1, i2;
