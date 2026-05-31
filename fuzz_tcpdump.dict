@@ -1,0 +1,20 @@
+# tcpdump protocol fuzzing dictionary
+# Ethernet/IP headers
+"\x08\x00"  # EtherType IPv4
+"\x86\xdd"  # EtherType IPv6
+"\x08\x06"  # ARP
+"\x81\x00"  # 802.1Q VLAN
+"\x88\x47"  # MPLS
+# IP protocols
+"\x06"  # TCP
+"\x11"  # UDP
+"\x01"  # ICMP
+"\x3a"  # ICMPv6
+"\x2f"  # GRE
+"\x11\x94"  # DNS port 4500
+# TCP flags
+"\x02"  # SYN
+"\x12"  # SYN-ACK
+"\x10"  # ACK
+"\x04"  # RST
+"\x18"  # PSH+ACK
