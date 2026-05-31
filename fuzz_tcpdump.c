@@ -6,7 +6,7 @@
  * index into the supported DLT list), remaining bytes are the raw packet.
  */
 
-#include <config.h>
+// #include <config.h>
 
 #include <stdint.h>
 #include <stdlib.h>
