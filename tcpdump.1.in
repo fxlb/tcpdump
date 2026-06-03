@@ -188,7 +188,7 @@ analysis, and/or with the
 flag, which causes it to read from a saved packet file rather than to
 read packets from a network interface.  It can also be run with the
 .B \-V
-flag, which causes it to read a list of saved packet files. In all cases,
+flag, which causes it to read a list of saved packet files.  In all cases,
 only packets that match
 .I expression
 will be processed by
@@ -253,7 +253,7 @@ your ``status'' character, typically control-T, although on some
 platforms, such as macOS, the ``status'' character is not set by
 default, so you must set it with
 .BR stty (1)
-in order to use it) and will continue capturing packets. On platforms that
+in order to use it) and will continue capturing packets.  On platforms that
 do not support the
 .B SIGINFO
 signal, the same can be achieved by using the
@@ -302,7 +302,7 @@ option is used, the \fIcount\fP starts after the skipped packets.
 .TP
 .BI \-\-count
 Print only on stdout the packet count when reading capture file(s) instead
-of parsing/printing the packets. If a filter is specified on the command
+of parsing/printing the packets.  If a filter is specified on the command
 line, \fItcpdump\fP counts only packets that were matched by the filter
 expression.
 .TP
@@ -335,7 +335,7 @@ or the particular DLT of the network interface specified with
 .B -y
 and
 .B -i
-respectively. In these cases the dump shows the same exact code that
+respectively.  In these cases the dump shows the same exact code that
 would filter the input file or the network interface without
 .BR -d .
 .IP
@@ -388,7 +388,7 @@ IEEE 802.11.
 .B \-E
 Use \fIspi@ipaddr algo:secret\fP for decrypting IPsec ESP packets that
 are addressed to \fIaddr\fP and contain Security Parameter Index value
-\fIspi\fP. This combination may be repeated with comma or newline separation.
+\fIspi\fP.  This combination may be repeated with comma or newline separation.
 .IP
 Note that setting the secret for IPv4 ESP packets is supported at this time.
 .IP
@@ -417,7 +417,7 @@ you make it visible to others, via
 and other occasions.
 .IP
 In addition to the above syntax, the syntax \fIfile name\fP may be used
-to have tcpdump read the provided file in. The file is opened upon
+to have tcpdump read the provided file in.  The file is opened upon
 receiving the first ESP packet, so any special permissions that tcpdump
 may have been given should already have been given up.
 .TP
@@ -741,11 +741,11 @@ flag.
 .TP
 .BI \-\-print\-sampling= nth
 .PD
-Print every \fInth\fP packet. This option enables the
+Print every \fInth\fP packet.  This option enables the
 .B \-\-print
 flag.
 .IP
-Unprinted packets are not parsed, which decreases processing time. Setting
+Unprinted packets are not parsed, which decreases processing time.  Setting
 \fInth\fP to \fB100\fP for example, will (counting from 1) parse and print the
 100th packet, 200th packet, 300th packet, and so on.
 .IP
@@ -760,7 +760,7 @@ numbers are not tracked for unprinted packets.
 .BI \-\-direction= direction
 .PD
 Choose send/receive direction \fIdirection\fR for which packets should be
-captured. Possible values are `in', `out' and `inout'. Not available
+captured.  Possible values are `in', `out' and `inout'.  Not available
 on all platforms.
 .TP
 .B \-q
@@ -842,11 +842,11 @@ and
 \fBzmtp1\fR (ZeroMQ Message Transport Protocol 1.0).
 .IP
 Note that the \fBpgm\fR type above affects UDP interpretation only, the native
-PGM is always recognised as IP protocol 113 regardless. UDP-encapsulated PGM is
-often called "EPGM" or "PGM/UDP".
+PGM is always recognised as IP protocol 113 regardless.  UDP-encapsulated PGM
+is often called "EPGM" or "PGM/UDP".
 .IP
 Note that the \fBpgm_zmtp1\fR type above affects interpretation of both native
-PGM and UDP at once. During the native PGM decoding the application data of an
+PGM and UDP at once.  During the native PGM decoding the application data of an
 ODATA/RDATA packet would be decoded as a ZeroMQ datagram with ZMTP/1.0 frames.
 During the UDP decoding in addition to that any UDP packet would be treated as
 an encapsulated PGM packet.
@@ -910,7 +910,7 @@ When writing to a file with the
 .B \-w
 option and at the same time not reading from a file with the
 .B \-r
-option, report to stderr, once per second, the number of packets captured. In
+option, report to stderr, once per second, the number of packets captured.  In
 Solaris, FreeBSD and possibly other operating systems this periodic update
 currently can cause loss of captured packets on their way from the kernel to
 tcpdump.
@@ -930,7 +930,7 @@ options are printed in full.  With
 telnet options are printed in hex as well.
 .TP
 .BI \-V " file"
-Read a list of filenames from \fIfile\fR. Standard input is used
+Read a list of filenames from \fIfile\fR.  Standard input is used
 if \fIfile\fR is ``-''.
 .TP
 .BI \-w " file"
@@ -946,11 +946,11 @@ amount of time after they are received.  Use the
 flag to cause packets to be written as soon as they are received.
 .IP
 The MIME type \fIapplication/vnd.tcpdump.pcap\fP has been registered
-with IANA for \fIpcap\fP files. The filename extension \fI.pcap\fP
+with IANA for \fIpcap\fP files.  The filename extension \fI.pcap\fP
 appears to be the most commonly used along with \fI.cap\fP and
-\fI.dmp\fP. \fItcpdump\fP itself doesn't check the extension when
+\fI.dmp\fP.  \fItcpdump\fP itself doesn't check the extension when
 reading capture files and doesn't add an extension when writing them
-(it uses magic numbers in the file header instead). However, many
+(it uses magic numbers in the file header instead).  However, many
 operating systems and applications will use the extension if it is
 present and adding one (e.g. .pcap) is recommended.
 .IP
@@ -1046,7 +1046,7 @@ run "
 .I postrotate-command file
 " where
 .I file
-is the savefile being closed after each rotation. For example, specifying
+is the savefile being closed after each rotation.  For example, specifying
 .B \-z gzip
 or
 .B \-z bzip2
@@ -1097,7 +1097,7 @@ implementations of
 .BR getopt_long (3)
 and regardless of whether the
 .B \%POSIXLY_CORRECT
-environment variable is set. Exception: On Windows, with cmd.exe command line,
+environment variable is set.  Exception: On Windows, with cmd.exe command line,
 single quoting must be replaced by double quoting.
 .LP
 For backward compatibility reasons
@@ -1237,9 +1237,9 @@ applied a time stamp to the packet.
 When the \fIany\fP interface is selected on capture or when a
 .B LINKTYPE_LINUX_SLL2
 capture file is read, the
-interface name is printed after the timestamp. This is followed by the packet
+interface name is printed after the timestamp.  This is followed by the packet
 type with \fIIn\fP and \fIOut\fP denoting a packet destined for this host or
-originating from this host respectively. Other possible values are \fIB\fP
+originating from this host respectively.  Other possible values are \fIB\fP
 for broadcast packets, \fIM\fP for multicast packets, and \fIP\fP for packets
 destined for other hosts.
 .SS Link Level Headers
@@ -1717,7 +1717,7 @@ tcpdump -i xl0 'tcp[13] & 2 == 2'
 .RE
 .PP
 Some offsets and field values may be expressed as names
-rather than as numeric values. For example,
+rather than as numeric values.  For example,
 .B tcp[13]
 may be replaced with
 .BR tcp[tcpflags] .
@@ -1891,7 +1891,7 @@ generation number.) In the second line, \fIwrl\fP replies `ok' with
 the same transaction id and the contents of the link.
 .LP
 In the third line, \fIsushi\fP asks (using a new transaction id) \fIwrl\fP
-to lookup the name `\fIxcolors\fP' in directory file 9,74/4096.6878. In
+to lookup the name `\fIxcolors\fP' in directory file 9,74/4096.6878.  In
 the fourth line, \fIwrl\fP sends a reply with the respective transaction id.
 .LP
 Note that the data printed
