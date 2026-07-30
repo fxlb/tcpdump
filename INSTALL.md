@@ -53,6 +53,11 @@ them.
 
 * Next, build tcpdump by running `make`.
 
+* It is recommended to test the resulting executable using `make check`.
+  Among many other things this confirms that the C compiler has used the
+  correct floating point instruction set, which can be a factor for less
+  common CPUs.
+
 On OpenBSD, you may need to set, before the `make`, the `AUTOCONF_VERSION`
 variable like:
 `AUTOCONF_VERSION=2.69 make`
