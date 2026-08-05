@@ -84,8 +84,6 @@ DayOfTheWeek, Month DD, YYYY / The Tcpdump Group
       Autoconf: Update config.{guess,sub}, timestamps 2025-07-10.
     Documentation:
       Add a README.qnx.md file.
-    QNX:
-      Use a lower packet buffer timeout.
 
 DayOfTheWeek, Month DD, YYYY / The Tcpdump Group
   Summary for 4.99.7 tcpdump release (so far!)
@@ -103,6 +101,8 @@ DayOfTheWeek, Month DD, YYYY / The Tcpdump Group
        Print an error message about --count without -r or -V.
     Building and testing:
       Treat SA_RESTART as optional.
+    QNX:
+      Use a lower packet buffer timeout.
 
 Tuesday, December 30, 2025 / The Tcpdump Group
   Summary for 4.99.6 tcpdump release
